@@ -34,7 +34,7 @@ const Button = styled.button`
   }
 `;
 
-export const ScrollToTopButton = ({ isFixed = false }) => {
+const ScrollToTopButton = ({ isFixed = false }) => {
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -71,4 +71,5 @@ export const ScrollToTopButton = ({ isFixed = false }) => {
   );
 };
 
+export { ScrollToTopButton };
 export default ScrollToTopButton;

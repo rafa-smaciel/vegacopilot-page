@@ -1,0 +1,20 @@
+# netlify.toml
+[build]
+  command = "npm run netlify-build"
+  publish = "build"
+
+[build.environment]
+  # Usar Node.js 18.x para compatibilidade com o canvas
+  NODE_VERSION = "18.16.0"
+  NPM_FLAGS = "--no-optional --omit=optional"
+  # Desabilitar canvas para evitar erros de compilação
+  DISABLE_CANVAS = "true"
+  # Ignora os erros de pacotes opcionais
+  IGNORE_OPTIONAL_ERRORS = "true"
+  CI = "false"
+
+# Configure redirecionamentos para SPAs
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

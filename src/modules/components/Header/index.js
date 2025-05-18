@@ -2,33 +2,37 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import * as S from './styles';
-import logoLight from '../../../assets/images/vega-robotics-logo-light.svg';
-import logoDark from '../../../assets/images/vega-robotics-logo.svg';
-import logoMobile from '../../../assets/images/vega-icon.svg';
 
-const Header = () => {
+// O logo do Vega Copilot deveria ser importado/utilizado aqui
+// Vou utilizar placeholders enquanto não temos os arquivos reais
+const logoLight = '/vega-copilot-logo-light.svg'; // Placeholder para o logo branco
+const logoDark = '/vega-copilot-logo-dark.svg';   // Placeholder para o logo escuro
+const logoMobile = '/vega-copilot-logo-icon.svg'; // Placeholder para o logo mobile
+
+// Criando o componente Header
+export const Header = () => {
   const menuRef = useRef();
   const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [productDropdownOpen, setProductDropdownOpen] = useState(false);
   
-  // Principais links de navegação com estrutura aninhada
+  // Links principais de navegação com estrutura aninhada
   const navLinks = [
     { title: 'Home', path: '/' },
     { 
-      title: 'Produtos', 
-      path: '/produtos',
+      title: 'Soluções', 
+      path: '/solucoes',
       dropdown: true,
       children: [
         { title: 'Vega Copilot', path: '/produtos/vega-copilot' },
         { title: 'Device Vega', path: '/produtos/device-vega' },
+        { title: 'Análise de Dados', path: '/produtos/analise-dados' },
       ]
     },
     { title: 'Tecnologia', path: '/tecnologia' },
     { title: 'Casos de Uso', path: '/casos-de-uso' },
     { title: 'Empresa', path: '/empresa' },
-    { title: 'Blog', path: '/blog' },
     { title: 'Contato', path: '/contato' },
   ];
 
@@ -73,10 +77,10 @@ const Header = () => {
       <S.Container scrolled={isScrolled}>
         <S.LeftSide>
           <S.LogoLink to="/" className="WebLogo">
-            <img src={isScrolled ? logoDark : logoLight} alt="Vega Robotics" />
+            <img src={isScrolled ? logoDark : logoLight} alt="Vega Copilot" />
           </S.LogoLink>
           <S.LogoLink to="/" className="MobileLogo">
-            <img src={logoMobile} alt="Vega Robotics" />
+            <img src={logoMobile} alt="Vega Copilot" />
           </S.LogoLink>
           <S.MenuHamburger onClick={toggleMenu}>
             <span></span>
@@ -94,7 +98,7 @@ const Header = () => {
                 <S.NavItemWithDropdown>
                   <S.NavLink 
                     to={link.path} 
-                    $isActive={pathname === link.path}
+                    $isActive={pathname === link.path || (pathname.includes('/produtos') && link.path === '/solucoes')}
                     onClick={toggleProductDropdown}
                   >
                     {link.title}
@@ -139,4 +143,5 @@ const Header = () => {
   );
 };
 
+// Garantindo que temos exportações nomeadas e padrão
 export default Header;

@@ -28,7 +28,12 @@ import {
   VideoContainer,
   VideoTitle,
   VideoDescription,
-  VideoFrame
+  VideoFrame,
+  FeatureList,
+  FeatureItem,
+  FeatureIcon,
+  FeatureHeading,
+  FeatureText
 } from './styles';
 import {
   FaCheckCircle,
@@ -36,7 +41,11 @@ import {
   FaTools,
   FaRobot,
   FaClock,
-  FaMoneyBillWave
+  FaMoneyBillWave,
+  FaShieldAlt,
+  FaBrain,
+  FaWrench,
+  FaFileAlt
 } from 'react-icons/fa';
 
 const Demonstracao = () => {
@@ -106,12 +115,35 @@ const Demonstracao = () => {
     {
       icon: <FaClock />,
       title: 'Implementação Rápida',
-      text: 'Plano detalhado para implantação em semanas, não meses.'
+      text: 'Plano detalhado para implantação em apenas 4 semanas, minimizando interrupções.'
     },
     {
       icon: <FaMoneyBillWave />,
       title: 'Proposta Personalizada',
       text: 'Cotação adaptada ao tamanho e necessidades específicas do seu negócio.'
+    }
+  ];
+
+  const features = [
+    {
+      icon: <FaShieldAlt />,
+      title: 'Processamento Local',
+      text: 'Todos os dados são processados localmente no dispositivo, garantindo maior segurança e privacidade.'
+    },
+    {
+      icon: <FaBrain />,
+      title: 'IA Explicável',
+      text: 'Algoritmos de IA transparentes que mostram claramente os motivos das decisões tomadas.'
+    },
+    {
+      icon: <FaWrench />,
+      title: 'Integração Flexível',
+      text: 'Compatível com sistemas MES, ERP e protocolos industriais padrão como OPC-UA e MQTT.'
+    },
+    {
+      icon: <FaFileAlt />,
+      title: 'Documentação Completa',
+      text: 'Fornecemos documentação detalhada e treinamento para sua equipe técnica e operacional.'
     }
   ];
 
@@ -206,6 +238,7 @@ const Demonstracao = () => {
                 <option value="heavy-machinery">Máquinas Pesadas</option>
                 <option value="manufacturing">Manufatura</option>
                 <option value="logistics">Logística</option>
+                <option value="chemical">Indústria Química</option>
                 <option value="other">Outro</option>
               </Select>
             </InputGroup>
@@ -285,7 +318,7 @@ const Demonstracao = () => {
           <BenefitsTitle>O que esperar da nossa demonstração</BenefitsTitle>
           <BenefitsList>
             {benefits.map((benefit, index) => (
-              <BenefitItem key={index}>
+              <BenefitItem key={index} className="animate-on-scroll">
                 <BenefitIcon>{benefit.icon}</BenefitIcon>
                 <BenefitContent>
                   <BenefitHeading>{benefit.title}</BenefitHeading>
@@ -299,12 +332,11 @@ const Demonstracao = () => {
 
       <DemoVideo>
         <VideoContainer>
-          <VideoTitle>Assista a uma prévia da nossa solução</VideoTitle>
+          <VideoTitle>Veja o Vega Copilot em ação</VideoTitle>
           <VideoDescription>
-            Veja um exemplo do Vega Copilot em ação em um ambiente de manufatura, mostrando a detecção de anomalias e as ferramentas de análise em tempo real.
+            Assista como o sistema detecta anomalias, processa dados em tempo real e integra-se ao ambiente industrial para fornecer insights acionáveis.
           </VideoDescription>
           <VideoFrame>
-            {/* Placeholder para o vídeo - substitua pela URL real do seu vídeo */}
             <iframe 
               width="100%" 
               height="100%" 
@@ -315,6 +347,18 @@ const Demonstracao = () => {
               allowFullScreen
             ></iframe>
           </VideoFrame>
+          
+          <FeatureList>
+            {features.map((feature, index) => (
+              <FeatureItem key={index} className="animate-on-scroll">
+                <FeatureIcon>{feature.icon}</FeatureIcon>
+                <div>
+                  <FeatureHeading>{feature.title}</FeatureHeading>
+                  <FeatureText>{feature.text}</FeatureText>
+                </div>
+              </FeatureItem>
+            ))}
+          </FeatureList>
         </VideoContainer>
       </DemoVideo>
     </Container>

@@ -14,7 +14,6 @@ import {
   ContactInfo,
   ContactItem
 } from './styles';
-import { ScrollToTopButton } from '../../../utils/ScrollToTop';
 
 // Ícones das redes sociais
 import { 
@@ -23,8 +22,42 @@ import {
   FaYoutube,
   FaPhone,
   FaEnvelope,
-  FaGlobe
+  FaGlobe,
+  FaArrowUp
 } from 'react-icons/fa';
+
+// Componente ScrollToTop simples para o footer
+const SimpleScrollToTop = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <button 
+      onClick={scrollToTop} 
+      aria-label="Voltar ao topo"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '40px',
+        height: '40px',
+        borderRadius: '50%',
+        backgroundColor: '#e31937',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        transition: 'all 0.3s ease'
+      }}
+    >
+      <FaArrowUp />
+    </button>
+  );
+};
 
 export const Footer = () => {
   // Links do footer organizados por seção
@@ -111,7 +144,7 @@ export const Footer = () => {
           &copy; {new Date().getFullYear()} VEGA Robotics®. Todos os direitos reservados.
         </Rights>
         <ScrollToTopWrapper>
-          <ScrollToTopButton />
+          <SimpleScrollToTop />
         </ScrollToTopWrapper>
       </BottomSection>
     </Container>

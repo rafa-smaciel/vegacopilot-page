@@ -1,5 +1,6 @@
 // src/modules/CasosDeUso/styles.js
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -72,6 +73,17 @@ export const CaseCard = styled.div`
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
   }
 `;
 
@@ -156,10 +168,121 @@ export const ResultLabel = styled.div`
   text-align: center;
 `;
 
+export const TestimonialSection = styled.section`
+  padding: 5rem 2rem;
+  background-color: #f3f4f6;
+  
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+  }
+`;
+
+export const TestimonialTitle = styled.h2`
+  font-size: 2.25rem;
+  color: #1a1a2e;
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+export const TestimonialGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+  
+  @media (min-width: 1900px) {
+    max-width: 1400px;
+    gap: 3rem;
+  }
+`;
+
+export const TestimonialCard = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+  }
+`;
+
+export const TestimonialText = styled.p`
+  font-size: 1.125rem;
+  color: #4b5563;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-style: italic;
+`;
+
+export const TestimonialAuthorInfo = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const TestimonialAuthorImage = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  object-fit: cover;
+`;
+
+export const TestimonialAuthorDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TestimonialAuthorName = styled.h3`
+  font-size: 1.125rem;
+  color: #1a1a2e;
+  margin-bottom: 0.25rem;
+`;
+
+export const TestimonialAuthorRole = styled.p`
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 0.125rem;
+`;
+
+export const TestimonialCompany = styled.p`
+  font-size: 0.875rem;
+  color: #e31937;
+  font-weight: 500;
+`;
+
 export const CTASection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 5rem 2rem;
   background-color: #f3f4f6;
@@ -191,7 +314,7 @@ export const CTADescription = styled.p`
   }
 `;
 
-export const CTAButton = styled.a`
+export const CTAButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;

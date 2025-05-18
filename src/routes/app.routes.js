@@ -1,41 +1,41 @@
-// src/routes/app.routes.js - Versão corrigida
-import React, { Suspense, useContext } from "react";
-import { Routes, Route } from "react-router-dom";
-import { LoadingContext } from "../context/LoadingContext";
-import { Loading } from "../modules/components/Loading";
-import { Home } from "../modules/Home";
+// src/routes/app.routes.js
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-// Importação das páginas adicionais
-// Importante: Não use React.lazy com importação usando chaves {}
-// Use a importação padrão (sem chaves)
-const SolucoesPage = React.lazy(() => import("../modules/Solucoes"));
-const TecnologiaPage = React.lazy(() => import("../modules/Tecnologia"));
-const CasosDeUsoPage = React.lazy(() => import("../modules/CasosDeUso"));
-const EmpresaPage = React.lazy(() => import("../modules/Empresa"));
-const ContatoPage = React.lazy(() => import("../modules/Contato"));
-const DemonstracaoPage = React.lazy(() => import("../modules/Demonstracao"));
-const ComecarAgoraPage = React.lazy(() => import("../modules/ComecarAgora"));
+// Importando componentes
+import { Home } from '../modules/Home';
+import CasosDeUso from '../modules/CasosDeUso';
+import ComecarAgora from '../modules/ComecarAgora';
+import Contato from '../modules/Contato';
+import Demonstracao from '../modules/Demonstracao';
+import Empresa from '../modules/Empresa';
+import Tecnologia from '../modules/Tecnologia';
 
-export const AppRoutes = () => {
-  const { loading } = useContext(LoadingContext);
+// Você pode precisar criar/importar estes componentes também
+// import Blog from '../modules/Blog';
+// import VegaCopilot from '../modules/Produtos/VegaCopilot';
+// import DeviceVega from '../modules/Produtos/DeviceVega';
 
-  // Se o loading estiver ativo, exibe a página de loading
-  if (loading) {
-    return <Loading />;
-  }
-
+const AppRoutes = () => {
   return (
-    <Suspense fallback={<Loading />}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/solucoes" element={<SolucoesPage />} />
-        <Route path="/tecnologia" element={<TecnologiaPage />} />
-        <Route path="/casos-de-uso" element={<CasosDeUsoPage />} />
-        <Route path="/empresa" element={<EmpresaPage />} />
-        <Route path="/contato" element={<ContatoPage />} />
-        <Route path="/demonstracao" element={<DemonstracaoPage />} />
-        <Route path="/comecar-agora" element={<ComecarAgoraPage />} />
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/casos-de-uso" element={<CasosDeUso />} />
+      <Route path="/comecar-agora" element={<ComecarAgora />} />
+      <Route path="/contato" element={<Contato />} />
+      <Route path="/demonstracao" element={<Demonstracao />} />
+      <Route path="/empresa" element={<Empresa />} />
+      <Route path="/tecnologia" element={<Tecnologia />} />
+      
+      {/* Descomente estas rotas quando os componentes forem implementados */}
+      {/* <Route path="/blog" element={<Blog />} /> */}
+      {/* <Route path="/produtos/vega-copilot" element={<VegaCopilot />} /> */}
+      {/* <Route path="/produtos/device-vega" element={<DeviceVega />} /> */}
+      
+      {/* Redireciona qualquer rota não encontrada para a página inicial */}
+      <Route path="*" element={<Home />} />
+    </Routes>
   );
 };
+
+export default AppRoutes;

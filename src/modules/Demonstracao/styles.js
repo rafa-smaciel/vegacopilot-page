@@ -1,5 +1,6 @@
 // src/modules/Demonstracao/styles.js
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -223,6 +224,17 @@ export const BenefitItem = styled.div`
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   }
+  
+  &.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+  }
 `;
 
 export const BenefitIcon = styled.div`
@@ -267,7 +279,7 @@ export const DemoVideo = styled.section`
 `;
 
 export const VideoContainer = styled.div`
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 `;
@@ -303,6 +315,7 @@ export const VideoFrame = styled.div`
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
   
   iframe {
     position: absolute;
@@ -311,4 +324,70 @@ export const VideoFrame = styled.div`
     width: 100%;
     height: 100%;
   }
+`;
+
+export const FeatureList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const FeatureItem = styled.div`
+  display: flex;
+  gap: 1rem;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+  }
+`;
+
+export const FeatureIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  background-color: #1a1a2e;
+  color: white;
+  border-radius: 50%;
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const FeatureHeading = styled.h3`
+  font-size: 1.125rem;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+`;
+
+export const FeatureText = styled.p`
+  font-size: 0.875rem;
+  color: #4b5563;
+  line-height: 1.5;
 `;

@@ -1,9 +1,14 @@
 // src/context/LoadingContext.js
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
+// Criando o contexto
 export const LoadingContext = createContext();
 
+// Hook customizado para usar o contexto de carregamento
+export const useLoading = () => useContext(LoadingContext);
+
+// Componente Provider
 export const LoadingProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
@@ -26,3 +31,6 @@ export const LoadingProvider = ({ children }) => {
     </LoadingContext.Provider>
   );
 };
+
+// Exportação padrão para compatibilidade com versões anteriores
+export default LoadingProvider;
