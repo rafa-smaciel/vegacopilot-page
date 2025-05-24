@@ -16,6 +16,8 @@ import {
   ResultItem,
   ResultValue,
   ResultLabel,
+  FeaturedCase,
+  FeaturedBadge,
   TestimonialSection,
   TestimonialTitle,
   TestimonialGrid,
@@ -30,7 +32,11 @@ import {
   CTASection,
   CTATitle,
   CTADescription,
-  CTAButton
+  CTAButton,
+  PipelineSection,
+  PipelineTitle,
+  PipelineDescription,
+  PipelineStats
 } from './styles';
 
 import { 
@@ -39,41 +45,46 @@ import {
   FaCar, 
   FaTools,
   FaRobot,
-  FaChartLine
+  FaChartLine,
+  FaCogs,
+  FaStar
 } from 'react-icons/fa';
 
 const CasosDeUso = () => {
+  // Case real da INDAB como featured + outros casos
   const cases = [
     {
       icon: <FaIndustry />,
       title: 'Redução de Defeitos em Linha de Produção',
-      industry: 'Metalurgia',
-      description: 'Implementação do sistema Vega Copilot para detecção automática de defeitos em peças metálicas durante o processo de fabricação, eliminando a necessidade de inspeção manual e reduzindo o tempo de parada da linha.',
+      industry: 'INDAB - Metalurgia',
+      description: 'Implementação do sistema Vega Copilot para detecção automática de defeitos em peças metálicas durante o processo de fabricação. O sistema opera 24/7 com IA explicável, eliminando a necessidade de inspeção manual e reduzindo drasticamente o tempo de parada da linha.',
       results: [
         { value: '98%', label: 'de precisão na detecção de defeitos' },
-        { value: '65%', label: 'de redução no tempo de inspeção' },
-        { value: '30%', label: 'de diminuição nas paradas de linha' }
-      ]
+        { value: '50%', label: 'de redução no tempo de inspeção' },
+        { value: '35%', label: 'de diminuição nas paradas de linha' }
+      ],
+      featured: true,
+      status: 'Em Operação desde Q2 2025'
     },
     {
       icon: <FaWarehouse />,
       title: 'Otimização de Inventário em Tempo Real',
       industry: 'Logística',
-      description: 'Implementação de sistema de visão computacional para monitoramento contínuo de estoque em armazém, permitindo rastreamento automático de entrada e saída de mercadorias e prevenção de erros de inventário.',
+      description: 'Implementação de sistema de visão computacional para monitoramento contínuo de estoque em armazém, permitindo rastreamento automático de entrada e saída de mercadorias com processamento 100% local.',
       results: [
         { value: '99.7%', label: 'de precisão no controle de estoque' },
-        { value: '40%', label: 'de redução em discrepâncias de inventário' },
-        { value: '3.5h', label: 'economizadas diariamente em verificações manuais' }
+        { value: '40%', label: 'de redução em discrepâncias' },
+        { value: '3.5h', label: 'economizadas diariamente' }
       ]
     },
     {
       icon: <FaCar />,
       title: 'Controle de Qualidade Automatizado',
       industry: 'Automotiva',
-      description: 'Sistema de visão para inspeção de componentes automotivos na linha de montagem, verificando automaticamente presença, posicionamento e instalação correta de peças críticas antes da finalização do produto.',
+      description: 'Sistema de visão para inspeção de componentes automotivos na linha de montagem, verificando automaticamente presença, posicionamento e instalação correta de peças críticas com IA explicável.',
       results: [
-        { value: '100%', label: 'de cobertura na inspeção de veículos' },
-        { value: '75%', label: 'de redução em recalls por defeitos' },
+        { value: '100%', label: 'de cobertura na inspeção' },
+        { value: '75%', label: 'de redução em recalls' },
         { value: 'R$2.3M', label: 'economizados anualmente' }
       ]
     },
@@ -81,11 +92,11 @@ const CasosDeUso = () => {
       icon: <FaTools />,
       title: 'Manutenção Preditiva de Equipamentos',
       industry: 'Manufatura Pesada',
-      description: 'Monitoramento contínuo de máquinas industriais para detecção precoce de sinais de falha, permitindo intervenções de manutenção antes de paradas não planejadas.',
+      description: 'Monitoramento contínuo de máquinas industriais para detecção precoce de sinais de falha, permitindo intervenções de manutenção antes de paradas não planejadas com análise em tempo real.',
       results: [
         { value: '85%', label: 'de redução em falhas inesperadas' },
-        { value: '45%', label: 'de aumento na vida útil dos equipamentos' },
-        { value: '24h', label: 'de aviso prévio antes de falhas críticas' }
+        { value: '45%', label: 'de aumento na vida útil' },
+        { value: '24h', label: 'de aviso prévio antes de falhas' }
       ]
     },
     {
@@ -94,16 +105,16 @@ const CasosDeUso = () => {
       industry: 'Automação Industrial',
       description: 'Utilização do Vega Copilot para supervisionar células robotizadas de soldagem, identificando desvios de qualidade e intervindo automaticamente para ajustes de parâmetros em tempo real.',
       results: [
-        { value: '92%', label: 'de redução em retrabalhos de soldagem' },
-        { value: '37%', label: 'de aumento na produtividade da célula' },
-        { value: '4.2x', label: 'ROI em apenas 6 meses de operação' }
+        { value: '92%', label: 'de redução em retrabalhos' },
+        { value: '37%', label: 'de aumento na produtividade' },
+        { value: '4.2x', label: 'ROI em apenas 6 meses' }
       ]
     },
     {
-      icon: <FaChartLine />,
+      icon: <FaCogs />,
       title: 'Eficiência Energética em Processos Produtivos',
       industry: 'Indústria Química',
-      description: 'Implementação de sistema de monitoramento inteligente para otimização do consumo energético em processos de mistura e aquecimento, reduzindo desperdícios e custos operacionais.',
+      description: 'Implementação de sistema de monitoramento inteligente para otimização do consumo energético em processos de mistura e aquecimento, reduzindo desperdícios com IA embarcada.',
       results: [
         { value: '27%', label: 'de redução no consumo energético' },
         { value: '18%', label: 'de diminuição na pegada de carbono' },
@@ -114,16 +125,16 @@ const CasosDeUso = () => {
 
   const testimonials = [
     {
-      text: "O Vega Copilot revolucionou nossa operação de controle de qualidade. Em apenas três meses, reduzimos drasticamente as paradas não planejadas e conseguimos identificar padrões de falha que anteriormente passavam despercebidos. O retorno sobre o investimento superou nossas expectativas.",
+      text: "O Vega Copilot revolucionou nossa operação de controle de qualidade. A IA explicável nos permite entender exatamente por que cada decisão é tomada, o que aumentou a confiança da equipe. Em apenas três meses, reduzimos drasticamente as paradas não planejadas e o retorno sobre o investimento superou nossas expectativas.",
       author: {
         name: "Carlos Mendes",
         role: "Diretor de Operações",
-        company: "Indab Metalúrgica",
+        company: "INDAB Metalúrgica",
         image: "https://via.placeholder.com/80x80?text=CM"
       }
     },
     {
-      text: "A implementação do sistema foi surpreendentemente rápida e a adaptação da equipe foi natural. A interface intuitiva e os alertas em tempo real mudaram completamente nossa abordagem para manutenção, passando de reativa para verdadeiramente preditiva.",
+      text: "A implementação foi surpreendentemente rápida - em 4 semanas estávamos operacionais. O processamento local garante que nossos dados permanecem seguros, e a interface intuitiva facilitou a adaptação da equipe. O sistema realmente aprende com nossa operação específica.",
       author: {
         name: "Ana Carolina Silva",
         role: "Gerente de Produção",
@@ -132,7 +143,7 @@ const CasosDeUso = () => {
       }
     },
     {
-      text: "Como parte de nossa jornada de transformação digital, o Vega Copilot foi a peça que faltava para conectar nossos sistemas legados com tecnologias de ponta. O suporte técnico e a capacidade de personalização para nosso contexto específico foram diferenciais importantes.",
+      text: "Como parte de nossa jornada de transformação digital, o Vega Copilot foi a peça que faltava. A capacidade de integração com nossos sistemas MES existentes e a transparência dos algoritmos foram diferenciais importantes para nossa tomada de decisão.",
       author: {
         name: "Ricardo Torres",
         role: "Coordenador de Melhoria Contínua",
@@ -145,18 +156,42 @@ const CasosDeUso = () => {
   return (
     <Container>
       <HeaderSection>
-        <h1>Casos de Uso</h1>
-        <p>Conheça histórias reais de clientes que transformaram suas operações com nossas soluções</p>
+        <h1>Casos de Uso Reais</h1>
+        <p>Conheça histórias reais de clientes que transformaram suas operações com o Vega Copilot</p>
       </HeaderSection>
+
+      <PipelineSection>
+        <PipelineTitle>Pipeline de Implementações</PipelineTitle>
+        <PipelineDescription>
+          Atualmente temos 13 dispositivos em pipeline de implementação, com os dois primeiros já em operação 
+          desde o segundo trimestre de 2025 na INDAB Metalúrgica
+        </PipelineDescription>
+        <PipelineStats>
+          <div>
+            <strong>13</strong>
+            <span>Dispositivos em Pipeline</span>
+          </div>
+          <div>
+            <strong>2</strong>
+            <span>Já em Operação (INDAB)</span>
+          </div>
+          <div>
+            <strong>Q2 2025</strong>
+            <span>Início das Operações</span>
+          </div>
+        </PipelineStats>
+      </PipelineSection>
 
       <CasesSection>
         {cases.map((caseItem, index) => (
-          <CaseCard key={index} className="animate-on-scroll">
+          <CaseCard key={index} className="animate-on-scroll" featured={caseItem.featured}>
+            {caseItem.featured && <FeaturedBadge><FaStar /> Case Real - Em Operação</FeaturedBadge>}
             <CaseHeader>
-              <CaseIcon>{caseItem.icon}</CaseIcon>
+              <CaseIcon featured={caseItem.featured}>{caseItem.icon}</CaseIcon>
               <CaseInfo>
                 <CaseTitle>{caseItem.title}</CaseTitle>
-                <CaseIndustry>{caseItem.industry}</CaseIndustry>
+                <CaseIndustry featured={caseItem.featured}>{caseItem.industry}</CaseIndustry>
+                {caseItem.status && <div style={{fontSize: '0.875rem', color: '#10b981', fontWeight: '600', marginTop: '0.25rem'}}>{caseItem.status}</div>}
               </CaseInfo>
             </CaseHeader>
             <CaseContent>
@@ -195,8 +230,8 @@ const CasosDeUso = () => {
 
       <CTASection>
         <CTATitle>Pronto para criar seu próprio caso de sucesso?</CTATitle>
-        <CTADescription>Vamos trabalhar juntos para adaptar nossas soluções aos desafios específicos da sua indústria.</CTADescription>
-        <CTAButton to="/demonstracao">Solicite uma Demonstração</CTAButton>
+        <CTADescription>Vamos trabalhar juntos para adaptar o Vega Copilot aos desafios específicos da sua indústria, com implementação em apenas 4 semanas.</CTADescription>
+        <CTAButton to="/demonstracao">Solicite um Piloto</CTAButton>
       </CTASection>
     </Container>
   );

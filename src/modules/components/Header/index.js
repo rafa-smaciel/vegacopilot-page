@@ -3,13 +3,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import * as S from './styles';
 
-// O logo do Vega Copilot deveria ser importado/utilizado aqui
-// Vou utilizar placeholders enquanto não temos os arquivos reais
-const logoLight = '/vega-copilot-logo-light.svg'; // Placeholder para o logo branco
-const logoDark = '/vega-copilot-logo-dark.svg';   // Placeholder para o logo escuro
-const logoMobile = '/vega-copilot-logo-icon.svg'; // Placeholder para o logo mobile
+// Logos - ajuste os caminhos conforme sua estrutura de assets
+const logoLight = '/vega-copilot-logo-light.svg';
+const logoDark = '/vega-copilot-logo-dark.svg';
+const logoMobile = '/vega-icon.svg';
 
-// Criando o componente Header
 export const Header = () => {
   const menuRef = useRef();
   const { pathname } = useLocation();
@@ -17,7 +15,7 @@ export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [productDropdownOpen, setProductDropdownOpen] = useState(false);
   
-  // Links principais de navegação com estrutura aninhada
+  // Links principais de navegação atualizados
   const navLinks = [
     { title: 'Home', path: '/' },
     { 
@@ -25,9 +23,9 @@ export const Header = () => {
       path: '/solucoes',
       dropdown: true,
       children: [
-        { title: 'Vega Copilot', path: '/produtos/vega-copilot' },
-        { title: 'Device Vega', path: '/produtos/device-vega' },
-        { title: 'Análise de Dados', path: '/produtos/analise-dados' },
+        { title: 'Vega Copilot (AIoT)', path: '/solucoes#vega-copilot' },
+        { title: 'Device Vega', path: '/solucoes#device-vega' },
+        { title: 'Projetos de Melhoria', path: '/solucoes#projetos-melhoria' },
       ]
     },
     { title: 'Tecnologia', path: '/tecnologia' },
@@ -52,6 +50,7 @@ export const Header = () => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setMenuOpen(false);
+        setProductDropdownOpen(false);
       }
     };
 
@@ -62,6 +61,7 @@ export const Header = () => {
   // Fecha menu ao mudar de rota
   useEffect(() => {
     setMenuOpen(false);
+    setProductDropdownOpen(false);
   }, [pathname]);
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
@@ -77,10 +77,10 @@ export const Header = () => {
       <S.Container scrolled={isScrolled}>
         <S.LeftSide>
           <S.LogoLink to="/" className="WebLogo">
-            <img src={isScrolled ? logoDark : logoLight} alt="Vega Copilot" />
+            <img src={isScrolled ? logoDark : logoLight} alt="Vega Robotics" />
           </S.LogoLink>
           <S.LogoLink to="/" className="MobileLogo">
-            <img src={logoMobile} alt="Vega Copilot" />
+            <img src={logoMobile} alt="Vega Robotics" />
           </S.LogoLink>
           <S.MenuHamburger onClick={toggleMenu}>
             <span></span>
@@ -98,7 +98,7 @@ export const Header = () => {
                 <S.NavItemWithDropdown>
                   <S.NavLink 
                     to={link.path} 
-                    $isActive={pathname === link.path || (pathname.includes('/produtos') && link.path === '/solucoes')}
+                    $isActive={pathname === link.path || pathname.includes('/solucoes')}
                     onClick={toggleProductDropdown}
                   >
                     {link.title}
@@ -110,6 +110,7 @@ export const Header = () => {
                         key={childIndex} 
                         to={child.path}
                         $isActive={pathname === child.path}
+                        onClick={() => setProductDropdownOpen(false)}
                       >
                         {child.title}
                       </S.DropdownItem>
@@ -131,7 +132,7 @@ export const Header = () => {
         <S.RightSide>
           <S.ButtonContainer>
             <S.SecondaryButton to="/demonstracao">
-              Solicite uma Demo
+              Solicite um Piloto
             </S.SecondaryButton>
             <S.PrimaryButton to="/comecar-agora">
               Comece Agora
@@ -143,5 +144,4 @@ export const Header = () => {
   );
 };
 
-// Garantindo que temos exportações nomeadas e padrão
 export default Header;

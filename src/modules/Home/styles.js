@@ -29,7 +29,7 @@ export const HeroSection = styled.section`
   min-height: 100vh;
   padding: 2rem;
   background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.85)),
-    #1a1a2e; /* Fundo simples em vez de imagem */
+    #1a1a2e;
   background-size: cover;
   color: white;
   position: relative;

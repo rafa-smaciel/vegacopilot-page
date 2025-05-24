@@ -38,6 +38,71 @@ export const HeaderSection = styled.section`
   }
 `;
 
+export const PipelineSection = styled.section`
+  padding: 5rem 2rem;
+  background-color: #f8fafc;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+  }
+`;
+
+export const PipelineTitle = styled.h2`
+  font-size: 2.25rem;
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+`;
+
+export const PipelineDescription = styled.p`
+  font-size: 1.125rem;
+  color: #4b5563;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+export const PipelineStats = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  div {
+    text-align: center;
+    
+    strong {
+      display: block;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #e31937;
+      margin-bottom: 0.5rem;
+      
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+    }
+    
+    span {
+      font-size: 1rem;
+      color: #6b7280;
+      font-weight: 600;
+    }
+  }
+`;
+
 export const CasesSection = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -69,6 +134,8 @@ export const CaseCard = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  border: ${props => props.featured ? '2px solid #e31937' : '1px solid #e5e7eb'};
   
   &:hover {
     transform: translateY(-5px);
@@ -87,6 +154,27 @@ export const CaseCard = styled.div`
   }
 `;
 
+export const FeaturedBadge = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #e31937, #b81424);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  z-index: 2;
+  
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+`;
+
 export const CaseHeader = styled.div`
   display: flex;
   align-items: center;
@@ -102,7 +190,7 @@ export const CaseIcon = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #e31937;
+  background-color: ${props => props.featured ? '#e31937' : '#e31937'};
   color: white;
   margin-right: 1rem;
   
@@ -124,7 +212,8 @@ export const CaseTitle = styled.h2`
 
 export const CaseIndustry = styled.p`
   font-size: 0.875rem;
-  color: #6b7280;
+  color: ${props => props.featured ? '#e31937' : '#6b7280'};
+  font-weight: ${props => props.featured ? '600' : '400'};
 `;
 
 export const CaseContent = styled.div`
