@@ -16,6 +16,8 @@ import Solucoes from '../modules/Solucoes';
 // import VegaCopilot from '../modules/Produtos/VegaCopilot';
 // import DeviceVega from '../modules/Produtos/DeviceVega';
 // import Blog from '../modules/Blog';
+// import Suporte from '../modules/Suporte';
+// import Documentacao from '../modules/Documentacao';
 
 const AppRoutes = () => {
   return (
@@ -35,14 +37,36 @@ const AppRoutes = () => {
       <Route path="/comecar-agora" element={<ComecarAgora />} />
       
       {/* Rotas de produtos específicos (para futuro dropdown de Soluções) */}
-      {/* <Route path="/produtos/vega-copilot" element={<VegaCopilot />} /> */}
-      {/* <Route path="/produtos/device-vega" element={<DeviceVega />} /> */}
-      {/* <Route path="/produtos/analise-dados" element={<AnaliseDados />} /> */}
+      {/* Estas rotas podem ser implementadas futuramente */}
+      {/* <Route path="/solucoes/vega-copilot" element={<VegaCopilot />} /> */}
+      {/* <Route path="/solucoes/device-vega" element={<DeviceVega />} /> */}
+      {/* <Route path="/solucoes/projetos-melhoria" element={<ProjetosMelhoria />} /> */}
       
-      {/* Outras rotas futuras */}
+      {/* Rotas de conteúdo (para futuro) */}
       {/* <Route path="/blog" element={<Blog />} /> */}
+      {/* <Route path="/blog/:slug" element={<BlogPost />} /> */}
       {/* <Route path="/suporte" element={<Suporte />} /> */}
+      {/* <Route path="/faq" element={<FAQ />} /> */}
       {/* <Route path="/documentacao" element={<Documentacao />} /> */}
+      {/* <Route path="/webinars" element={<Webinars />} /> */}
+      
+      {/* Rotas de negócio (para futuro) */}
+      {/* <Route path="/parceiros" element={<Parceiros />} /> */}
+      {/* <Route path="/trabalhe-conosco" element={<TrabalheConosco />} /> */}
+      {/* <Route path="/sobre" element={<Sobre />} /> */}
+      {/* <Route path="/time" element={<Time />} /> */}
+      
+      {/* Rotas específicas de indústrias (para futuro) */}
+      {/* <Route path="/industrias/automotiva" element={<Automotiva />} /> */}
+      {/* <Route path="/industrias/metalurgia" element={<Metalurgia />} /> */}
+      {/* <Route path="/industrias/maquinas-pesadas" element={<MaquinasPesadas />} /> */}
+      {/* <Route path="/industrias/manufatura" element={<Manufatura />} /> */}
+      {/* <Route path="/industrias/logistica" element={<Logistica />} /> */}
+      
+      {/* Rotas de legal/compliance (para futuro) */}
+      {/* <Route path="/privacidade" element={<Privacidade />} /> */}
+      {/* <Route path="/termos" element={<Termos />} /> */}
+      {/* <Route path="/cookies" element={<Cookies />} /> */}
       
       {/* Redirect para casos não encontrados */}
       <Route path="*" element={<Home />} />

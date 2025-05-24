@@ -1,375 +1,367 @@
 // src/modules/components/Header/styles.js
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FaChevronDown } from 'react-icons/fa';
 
-export const Container = styled.header`
+// Cores - copiadas localmente para evitar dependência
+const colors = {
+  primary: '#059669',
+  primaryDark: '#047857',
+  primaryLight: '#10b981',
+  secondary: '#064e3b',
+  neutral50: '#f8fafc',
+  neutral100: '#f1f5f9',
+  neutral200: '#e2e8f0',
+  neutral400: '#94a3b8',
+  neutral500: '#64748b',
+  neutral600: '#475569',
+  neutral700: '#334155',
+  neutral800: '#1e293b',
+  white: '#ffffff'
+};
+
+const breakpoints = {
+  mobile: '768px',
+  tablet: '1024px',
+  large: '1900px'
+};
+
+export const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1000;
+  background: ${colors.white};
+  border-bottom: 1px solid ${colors.neutral200};
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+`;
+
+export const HeaderContent = styled.div`
+  max-width: none;
+  margin: 0;
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
-  padding: 0 2.5rem;
-  transition: all 0.3s ease-in-out;
-  z-index: 1000;
-  
-  ${({ scrolled }) => scrolled ? css`
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    
-    a {
-      color: #1a1a2e;
-    }
-  ` : css`
-    background-color: transparent;
-    
-    a {
-      color: white;
-    }
-  `}
-  
-  @media (min-width: 1900px) {
-    height: 100px;
+  height: 64px;
+  position: relative;
+  width: 100%;
+
+  @media (min-width: ${breakpoints.large}) {
     padding: 0 4rem;
   }
-  
-  @media (max-width: 1024px) {
-    padding: 0 1.5rem;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 0 1rem;
+    height: 60px;
   }
 `;
 
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 998;
-`;
-
-export const LeftSide = styled.div`
-  display: flex;
-  align-items: center;
-  
-  .MobileLogo {
-    display: none;
-  }
-  
-  @media (max-width: 850px) {
-    width: 100%;
-    justify-content: space-between;
-    
-    .WebLogo {
-      display: none;
-    }
-    
-    .MobileLogo {
-      display: flex;
-    }
-  }
-`;
-
-export const LogoLink = styled(Link)`
+export const Logo = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  
+  z-index: 1001;
+
   img {
     height: 40px;
+    object-fit: contain;
     transition: transform 0.3s ease;
-    
-    &:hover {
-      transform: scale(1.05);
-    }
-    
-    @media (min-width: 1900px) {
-      height: 48px;
-    }
-    
-    @media (max-width: 850px) {
-      &.mobile {
-        height: 34px;
-        width: 34px;
-      }
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    img {
+      height: 32px;
     }
   }
 `;
 
-export const MenuHamburger = styled.div`
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  cursor: pointer;
-  
-  span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: currentColor;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-  }
-  
-  @media (max-width: 850px) {
-    display: flex;
-  }
-`;
-
-export const CenterSide = styled.nav`
+export const Navigation = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: center;
-  
-  @media (max-width: 850px) {
-    position: fixed;
-    top: 0;
-    left: ${({ menuOpen }) => menuOpen ? '0' : '-100%'};
-    width: 300px;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: #1a1a2e;
-    transition: left 0.3s ease;
-    padding: 80px 2rem 2rem;
-    overflow-y: auto;
-    z-index: 999;
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
-    
-    & > div {
-      width: 100%;
-    }
+  gap: 2rem;
+  margin-left: 2rem;
+  flex: 1;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
   }
 `;
 
-export const NavLink = styled(Link)`
+export const NavItem = styled.div`
+  position: relative;
+`;
+
+export const NavLink = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 1rem;
-  height: 80px;
-  font-size: 16px;
-  font-weight: 600;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  color: ${colors.neutral600};
   text-decoration: none;
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  white-space: nowrap;
-  
-  ${({ $isActive }) => $isActive && css`
-    color: #e31937 !important;
-    
-    &::after {
-      width: 100%;
-    }
-  `}
-  
-  &::after {
+
+  &:hover, &.active {
+    color: ${colors.primary};
+  }
+
+  &:hover::after, &.active::after {
     content: '';
     position: absolute;
-    bottom: 25px;
-    left: 1rem;
-    width: ${({ $isActive }) => $isActive ? '60%' : '0'};
-    height: 3px;
-    background-color: #e31937;
-    transition: width 0.3s ease;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: ${colors.primary};
   }
-  
-  &:hover {
-    color: #e31937 !important;
+
+  svg {
+    font-size: 0.75rem;
+    transition: transform 0.3s ease;
     
-    &::after {
-      width: 60%;
-    }
-  }
-  
-  @media (min-width: 1900px) {
-    height: 100px;
-    font-size: 18px;
-    padding: 0 1.5rem;
-  }
-  
-  @media (max-width: 850px) {
-    height: auto;
-    padding: 1.25rem 0;
-    font-size: 18px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-    color: white !important;
-    
-    &::after {
-      display: none;
+    &.rotated {
+      transform: rotate(180deg);
     }
   }
 `;
 
-export const NavItemWithDropdown = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  
-  @media (max-width: 850px) {
-    width: 100%;
-  }
-`;
-
-export const DropdownIcon = styled(FaChevronDown)`
-  margin-left: 0.5rem;
-  font-size: 12px;
-  transition: transform 0.3s ease;
-  
-  ${({ open }) => open && css`
-    transform: rotate(180deg);
-  `}
-`;
-
-export const DropdownMenu = styled.div`
+export const NavDropdown = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: white;
-  min-width: 220px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 0.5rem 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
+  opacity: ${props => props.active ? 1 : 0};
+  visibility: ${props => props.active ? 'visible' : 'hidden'};
+  transform: translateY(${props => props.active ? '0' : '-10px'});
   transition: all 0.3s ease;
-  
-  ${({ open }) => open && css`
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  `}
-  
-  @media (max-width: 850px) {
-    position: relative;
-    box-shadow: none;
-    background-color: rgba(255, 255, 255, 0.05);
-    margin-left: 1rem;
-    border-radius: 0;
-    max-height: ${({ open }) => open ? '500px' : '0'};
-    overflow: hidden;
-    transform: none;
-    transition: max-height 0.3s ease;
-  }
+  z-index: 1000;
+`;
+
+export const DropdownMenu = styled.div`
+  background: ${colors.white};
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${colors.neutral200};
+  padding: 0.5rem;
+  min-width: 280px;
+  margin-top: 0.5rem;
 `;
 
 export const DropdownItem = styled(Link)`
   display: block;
-  padding: 0.75rem 1.5rem;
-  font-size: 15px;
-  color: #1a1a2e !important;
+  padding: 0.875rem 1rem;
   text-decoration: none;
-  transition: background-color 0.3s ease;
-  
-  ${({ $isActive }) => $isActive && css`
-    color: #e31937 !important;
-    background-color: rgba(227, 25, 55, 0.05);
-  `}
-  
-  &:hover {
-    background-color: rgba(227, 25, 55, 0.05);
-    color: #e31937 !important;
-  }
-  
-  @media (max-width: 850px) {
-    color: white !important;
-    padding: 1rem 1.5rem;
-    
-    &:hover {
-      background-color: rgba(227, 25, 55, 0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    strong {
+      color: ${colors.neutral700};
+      font-weight: 600;
+      font-size: 0.95rem;
     }
+
+    span {
+      color: ${colors.neutral500};
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+  }
+
+  &:hover {
+    background: rgba(5, 150, 105, 0.05);
     
-    ${({ $isActive }) => $isActive && css`
-      background-color: rgba(227, 25, 55, 0.2);
-    `}
+    div strong {
+      color: ${colors.primary};
+    }
   }
 `;
 
-export const CloseButton = styled.button`
-  display: none;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 32px;
-  color: white;
-  cursor: pointer;
-  
-  @media (max-width: 850px) {
-    display: block;
-  }
-`;
-
-export const RightSide = styled.div`
+export const AuthButtons = styled.div`
   display: flex;
   align-items: center;
-  
-  @media (max-width: 850px) {
+  gap: 0.5rem;
+
+  @media (max-width: ${breakpoints.tablet}) {
     display: none;
   }
 `;
 
-export const ButtonContainer = styled.div`
+export const CountrySelector = styled.div`
   display: flex;
-  gap: 1rem;
-`;
-
-export const PrimaryButton = styled(Link)`
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
-  background-color: #e31937;
-  color: white !important;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  border: 2px solid #e31937;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
   transition: all 0.3s ease;
-  
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: ${colors.neutral600};
+  gap: 0.25rem;
+  background: ${colors.neutral100};
+
   &:hover {
-    background-color: #b81424;
-    border-color: #b81424;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(227, 25, 55, 0.2);
-  }
-  
-  @media (min-width: 1900px) {
-    padding: 0.875rem 1.75rem;
-    font-size: 16px;
+    background: ${colors.neutral200};
   }
 `;
 
-export const SecondaryButton = styled(Link)`
-  display: inline-flex;
+export const FlagIcon = styled.span`
+  font-size: 1rem;
+`;
+
+export const LoginButton = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: ${colors.neutral600};
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: none;
+
+  &:hover {
+    color: ${colors.primary};
+    background: rgba(5, 150, 105, 0.05);
+  }
+
+  svg {
+    font-size: 0.875rem;
+  }
+`;
+
+export const DemoButton = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: ${colors.primary};
+  color: ${colors.white};
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: 2px solid ${colors.primary};
+
+  &:hover {
+    background: ${colors.primaryDark};
+    border-color: ${colors.primaryDark};
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+  }
+
+  svg {
+    font-size: 0.875rem;
+  }
+`;
+
+export const MobileMenuButton = styled.button`
+  display: none;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
-  background-color: transparent;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  border: 2px solid currentColor;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: ${colors.neutral700};
+  cursor: pointer;
   transition: all 0.3s ease;
-  
+  border-radius: 6px;
+
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background: ${colors.neutral100};
+    color: ${colors.primary};
   }
-  
-  @media (min-width: 1900px) {
-    padding: 0.875rem 1.75rem;
-    font-size: 16px;
+
+  svg {
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: flex;
+  }
+`;
+
+export const MobileMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: ${colors.white};
+  border-bottom: 1px solid ${colors.neutral200};
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  opacity: ${props => props.isOpen ? 1 : 0};
+  visibility: ${props => props.isOpen ? 'visible' : 'hidden'};
+  transform: translateY(${props => props.isOpen ? '0' : '-20px'});
+  transition: all 0.3s ease;
+  z-index: 999;
+  max-height: ${props => props.isOpen ? '80vh' : '0'};
+  overflow-y: auto;
+
+  @media (min-width: ${breakpoints.tablet}) {
+    display: none;
+  }
+`;
+
+export const BlogLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  color: ${colors.neutral600};
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    color: ${colors.primary};
+  }
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: ${colors.primary};
+  }
+`;
+
+export const MobileNavItem = styled(Link)`
+  display: block;
+  padding: 1rem 2rem;
+  color: ${colors.neutral700};
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  border-bottom: 1px solid ${colors.neutral100};
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(5, 150, 105, 0.05);
+    color: ${colors.primary};
+  }
+
+  &:last-child {
+    border-bottom: none;
   }
 `;
