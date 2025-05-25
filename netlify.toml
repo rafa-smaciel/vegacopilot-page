@@ -5,8 +5,9 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  CI = "false"          # <- adicionamos esta linha
 
-# Configure redirecionamentos para SPAs
+# Configure redirecionamentos para SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
