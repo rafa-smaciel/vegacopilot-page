@@ -1,4 +1,5 @@
 // src/modules/Home/index.js - Estrutura Principal Modular
+// import { Link } from 'react-router-dom'; // ainda não usado
 import React, { useEffect } from 'react';
 import { Container } from './globalStyles';
 

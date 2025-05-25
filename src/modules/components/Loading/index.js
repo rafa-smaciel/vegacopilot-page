@@ -1,4 +1,5 @@
 // src/modules/components/Loading/index.js
+// import { Link } from 'react-router-dom'; // ainda não usado
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 

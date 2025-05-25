@@ -1,4 +1,5 @@
 // src/modules/Home/containers/HeroSection/index.js
+// import { Link } from 'react-router-dom'; // ainda não usado
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {

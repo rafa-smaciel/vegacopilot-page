@@ -1,4 +1,5 @@
 // src/modules/Tecnologia/index.js
+// import { Link } from 'react-router-dom'; // ainda não usado
 import React from 'react';
 import {
   Container,

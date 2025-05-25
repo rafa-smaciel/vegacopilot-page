@@ -1,4 +1,5 @@
 // src/modules/Home/containers/IntegratedSystemSection/index.js
+// import { Link } from 'react-router-dom'; // ainda não usado
 import React, { useState, useEffect } from 'react';
 import {
   SystemContainer,
