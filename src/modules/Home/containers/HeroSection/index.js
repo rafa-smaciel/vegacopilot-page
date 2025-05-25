@@ -1,5 +1,6 @@
 // src/modules/Home/containers/HeroSection/index.js
 // import { Link } from 'react-router-dom'; // ainda não usado
+// eslint-disable-line no-unused-vars
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {

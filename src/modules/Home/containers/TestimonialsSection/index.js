@@ -1,5 +1,6 @@
 // src/modules/Home/containers/TestimonialsSection/index.js
 // import { Link } from 'react-router-dom'; // ainda não usado
+// eslint-disable-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import {
   TestimonialsContainer,

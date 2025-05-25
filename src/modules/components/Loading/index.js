@@ -1,5 +1,6 @@
 // src/modules/components/Loading/index.js
 // import { Link } from 'react-router-dom'; // ainda não usado
+// eslint-disable-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
