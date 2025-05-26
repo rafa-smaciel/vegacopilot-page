@@ -1,6 +1,4 @@
 // src/modules/Home/containers/HeroSection/index.js
-// import { Link } from 'react-router-dom'; // ainda não usado
-// eslint-disable-line no-unused-vars
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -30,19 +28,21 @@ import {
   FaPause,
   FaRocket,
   FaIndustry,
-  FaLeaf
+  FaLeaf,
+  FaEye,
+  FaCog
 } from 'react-icons/fa';
 
-// Importar o vídeo local
-import vegaHeroVideo from '../../../../assets/vega-hero.mp4';
+// Placeholder para vídeo do VIXEM - substitua pelo caminho correto quando disponível
+import vixemHeroVideo from '../../../../assets/vixem-hero.mp4';
 
 const HeroSection = () => {
   const [videoPlaying, setVideoPlaying] = useState(false);
 
-  // Stats baseados nos dados reais do Vega Copilot
+  // Stats baseados nos dados reais do VIXEM
   const stats = [
     { value: '98%', label: 'Precisão IA' },
-    { value: '-50%', label: 'Downtime' },
+    { value: '-50%', label: 'Paradas não planejadas' },
     { value: '7x', label: 'ROI em 12 meses' }
   ];
 
@@ -55,19 +55,19 @@ const HeroSection = () => {
       <HeroContent>
         <HeroText>
           <SustainabilityBadge>
-            <FaBrain />
-            IA Industrial Eleita pela Forbes AI 50
+            <FaEye />
+            Powered by NVIDIA Inception Program
           </SustainabilityBadge>
           
           <HeroTitle>
-            A <span className="highlight">Inteligência Artificial</span><br />
-            Industrial Eleita pela<br />
-            Forbes AI 50
+            <span className="highlight">VIXEM</span> - Vision Expert<br />
+            for Manufacturing que prepara<br />
+            sua indústria para o futuro
           </HeroTitle>
           
           <HeroSubtitle>
-            Monitore máquinas, previna falhas e aumente eficiência com IA 100% explicável. 
-            Tecnologia nacional que reduz custos e desperdícios industriais com processamento local.
+            Monitore equipamentos, previna falhas e otimize processos com visão computacional 
+            e IA explicável. Solução 100% nacional com processamento local e integração ágil.
           </HeroSubtitle>
           
           <HeroStats>
@@ -84,9 +84,9 @@ const HeroSection = () => {
               <FaRocket />
               Solicitar Diagnóstico
             </PrimaryButton>
-            <SecondaryButton to="/casos-de-uso">
+            <SecondaryButton to="/demo">
               <FaPlay />
-              Ver Demo
+              Ver VIXEM em Ação
             </SecondaryButton>
           </HeroButtons>
         </HeroText>
@@ -99,20 +99,23 @@ const HeroSection = () => {
               </VideoPlayButton>
             </VideoOverlay>
             
-            {/* Vídeo local do Vega Copilot */}
+            {/* Placeholder de vídeo do VIXEM - substitua pela URL ou caminho correto */}
             <video
               autoPlay
               muted
               loop
               playsInline
               controls={false}
+              poster="https://via.placeholder.com/800x450/C41E3A/FFFFFF?text=VIXEM+Demo"
               style={{ 
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover'
               }}
             >
-              <source src={vegaHeroVideo} type="video/mp4" />
+              {/* Descomente e ajuste o caminho quando o vídeo estiver disponível */}
+              <source src={vixemHeroVideo} type="video/mp4" />
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
               Seu navegador não suporta o elemento de vídeo.
             </video>
             
@@ -122,7 +125,7 @@ const HeroSection = () => {
                 <span className="value">99.2%</span>
               </div>
               <div className="stat">
-                <span className="label">Local:</span>
+                <span className="label">Cliente:</span>
                 <span className="value">INDAB</span>
               </div>
               <div className="stat">
@@ -132,12 +135,12 @@ const HeroSection = () => {
             </VideoStats>
           </VideoContainer>
 
-          {/* Mockup alternativo caso não tenha vídeo */}
+          {/* Mockup alternativo para demonstração do VIXEM - ative removendo display: 'none' */}
           <MockupContainer style={{ display: 'none' }}>
             <MockupContent>
               <div className="title">
                 <FaIndustry />
-                Vega Copilot Dashboard
+                VIXEM Dashboard
               </div>
               <div className="metrics">
                 <div className="metric">
@@ -154,12 +157,12 @@ const HeroSection = () => {
                 </div>
                 <div className="metric">
                   <div className="value">100%</div>
-                  <div className="label">Local</div>
+                  <div className="label">On-Premise</div>
                 </div>
               </div>
               <div className="status">
-                <FaLeaf />
-                Sistema Operacional - INDAB Metalúrgica
+                <FaCog />
+                Sistema Operacional - Indústria Metalúrgica
               </div>
             </MockupContent>
           </MockupContainer>

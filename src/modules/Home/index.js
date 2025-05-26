@@ -52,43 +52,43 @@ export const Home = () => {
       <CompanyLogosSection />
 
       {/* 2.5. Gerente de Planta - CTA Intermediário ✅ IMPLEMENTADO */}
-      <PlantManagerSection />
+      {/* <PlantManagerSection /> */}
 
       {/* 3. Produtos Principais - Vega Copilot, Device Vega, Energy Efficiency */}
-      <ProductsSection />
+      {/* <ProductsSection /> */}
 
       {/* 4. Tecnologia/Engenharia - Cards com hover */}
-      <TechnologySection />
+      {/* <TechnologySection /> */}
 
       {/* 5. Sistema Integrado - Carrossel de funcionalidades */}
-      <IntegratedSystemSection />
+      {/* <IntegratedSystemSection /> */}
 
       {/* 6. Estudos de Caso - Abas com empresas */}
-      <CaseStudySection />
+      {/* <CaseStudySection /> */}
 
       {/* 7. Segurança - Certificações */}
-      <SecuritySection />
+      {/* <SecuritySection /> */}
 
       {/* 8. Depoimentos - Carrossel de clientes */}
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
 
       {/* 9. ROI AtlasIntel - Métricas de retorno */}
-      <ROISection />
+      {/* <ROISection /> */}
 
       {/* 10. Novidades - Desenvolvimentos recentes */}
-      <NewsSection />
+      {/* <NewsSection /> */}
 
       {/* 11. Indústrias - Grid de setores ✅ IMPLEMENTADO */}
-      <IndustriesSection />
+      {/* <IndustriesSection /> */}
 
       {/* 12. Tecnologia Patenteada - 3 camadas IA ✅ IMPLEMENTADO */}
-      <PatentedTechSection />
+      {/* <PatentedTechSection /> */}
 
       {/* 13. Ecossistema - Parceiros SAP/Oracle/Siemens ✅ IMPLEMENTADO */}
-      <EcosystemSection />
+      {/* <EcosystemSection /> */}
 
       {/* 14. CTA Form - Formulário + imagem do produto ✅ IMPLEMENTADO */}
-      <CTAFormSection />
+      {/* <CTAFormSection /> */}
 
       {/* AnimateOnScroll Component */}
       <AnimateOnScroll />

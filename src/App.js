@@ -5,12 +5,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 // Componentes globais
 import GlobalStyle from './styles/global';
-import { LoadingProvider } from './context/LoadingContext';
+// import { LoadingProvider } from './context/LoadingContext'; // DESATIVADO
 
 // Componentes de layout
 import { Header } from './modules/components/Header';
 import { Footer } from './modules/components/Footer';
-import { Loading } from './modules/components/Loading';
+// import { Loading } from './modules/components/Loading'; // DESATIVADO
 
 // Rotas
 import AppRoutes from './routes/app.routes';
@@ -20,11 +20,11 @@ import AnimateOnScroll from './utils/AnimateOnScroll';
 import { ScrollToTopButton } from './utils/ScrollToTop';
 
 // Hook para loading
-import { useLoading } from './context/LoadingContext';
+// import { useLoading } from './context/LoadingContext'; // DESATIVADO
 
-// Componente interno que usa o contexto de loading
+// Componente interno sem loading
 const AppContent = () => {
-  const { loading } = useLoading();
+  // const { loading } = useLoading(); // DESATIVADO
 
   // Efeito para animações no scroll
   useEffect(() => {
@@ -69,9 +69,10 @@ const AppContent = () => {
     return () => document.removeEventListener('click', handleSmoothScroll);
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
+  // LOADING DESATIVADO - sempre mostra o conteúdo
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   return (
     <>
@@ -79,7 +80,7 @@ const AppContent = () => {
       <main style={{ marginTop: '80px' }}> {/* Compensar altura do header fixo */}
         <AppRoutes />
       </main>
-      <Footer />
+      {/* <Footer /> */}
       <ScrollToTopButton isFixed />
     </>
   );
@@ -91,10 +92,11 @@ function App() {
     <>
       <GlobalStyle />
       <Router>
-        <LoadingProvider>
+        {/* LoadingProvider DESATIVADO */}
+        {/* <LoadingProvider> */}
           <AppContent />
           <AnimateOnScroll />
-        </LoadingProvider>
+        {/* </LoadingProvider> */}
       </Router>
     </>
   );

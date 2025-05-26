@@ -1,6 +1,4 @@
 // src/modules/Home/containers/CompanyLogosSection/index.js
-// import { Link } from 'react-router-dom'; // ainda não usado
-// eslint-disable-line no-unused-vars
 import React from 'react';
 import {
   LogosContainer,
@@ -10,88 +8,83 @@ import {
   CompanyLogo
 } from './styles';
 
+import NVIDIA from '../../../../assets/parceiros/8.png';
+import INCAMP from '../../../../assets/parceiros/9.png';
+import UPLAB from '../../../../assets/parceiros/10.png';
+import USP from '../../../../assets/parceiros/13.png';
+import FIAP from '../../../../assets/parceiros/14.png';
+import UNIFESP from '../../../../assets/parceiros/12.png';
+
 const CompanyLogosSection = () => {
-  // Logos das empresas parceiras/clientes reais baseados no pitch do Vega Copilot
-  const companyLogos = [
-    { 
-      name: 'INDAB Metalúrgica', 
-      image: 'https://via.placeholder.com/180x80?text=INDAB+Metalúrgica',
-      featured: true // Cliente real em operação
+  // Instituições e parceiros baseados no documento VIXEM
+  const institutionLogos = [
+    {
+      name: 'NVIDIA Inception Program',
+      image: NVIDIA,
+      featured: true // Parceiro estratégico principal
     },
-    { 
-      name: 'Copaj Indústria', 
-      image: 'https://via.placeholder.com/180x80?text=Copaj+Indústria' 
-    },
-    { 
-      name: 'Grupo Mahle', 
-      image: 'https://via.placeholder.com/180x80?text=Grupo+Mahle' 
-    },
-    { 
-      name: 'NVIDIA Inception', 
-      image: 'https://via.placeholder.com/180x80?text=NVIDIA+Inception',
-      featured: true // Parceiro estratégico
-    },
-    { 
-      name: 'INCAMP Unicamp', 
-      image: 'https://via.placeholder.com/180x80?text=INCAMP+Unicamp',
+    {
+      name: 'INCAMP Unicamp',
+      image: INCAMP,
       featured: true // Incubadora
     },
-    { 
-      name: 'SENAI', 
-      image: 'https://via.placeholder.com/180x80?text=SENAI' 
+    {
+      name: 'UpLab',
+      image: UPLAB,
+      featured: true // Aceleradora
     },
-    { 
-      name: 'UPLAB', 
-      image: 'https://via.placeholder.com/180x80?text=UPLAB' 
+    {
+      name: 'USP',
+      image: USP,
     },
-    { 
-      name: 'Komatsu', 
-      image: 'https://via.placeholder.com/180x80?text=Komatsu' 
+    {
+      name: 'FIAP',
+      image: FIAP,
     },
-    { 
-      name: 'Caterpillar', 
-      image: 'https://via.placeholder.com/180x80?text=Caterpillar' 
-    }
+    {
+      name: 'UNIFESP',
+      image: UNIFESP
+    },
   ];
 
   return (
     <LogosContainer>
-      <LogosTitle>Confiado por líderes da indústria brasileira</LogosTitle>
+      <LogosTitle>Instituições que nos Apoiam</LogosTitle>
       <LogosCarousel>
         <LogosTrack>
           {/* Primeiro conjunto para o carrossel infinito */}
-          {companyLogos.map((company, index) => (
+          {institutionLogos.map((institution, index) => (
             <CompanyLogo 
-              key={`first-${index}`} 
-              src={company.image} 
-              alt={company.name}
-              featured={company.featured}
-              title={company.name}
+              key={`first-${index}`}
+              src={institution.image}
+              alt={institution.name}
+              featured={institution.featured}
+              title={institution.name}
             />
           ))}
           {/* Segundo conjunto para loop infinito */}
-          {companyLogos.map((company, index) => (
+          {institutionLogos.map((institution, index) => (
             <CompanyLogo 
-              key={`second-${index}`} 
-              src={company.image} 
-              alt={company.name}
-              featured={company.featured}
-              title={company.name}
+              key={`second-${index}`}
+              src={institution.image}
+              alt={institution.name}
+              featured={institution.featured}
+              title={institution.name}
             />
           ))}
         </LogosTrack>
       </LogosCarousel>
       
-      {/* Informação adicional sobre o pipeline */}
+      {/* Informação sobre clientes e pipeline */}
       <div style={{ 
-        textAlign: 'center', 
-        marginTop: '2rem', 
-        fontSize: '0.9rem', 
-        color: '#6b7280',
+        textAlign: 'center',
+        marginTop: '2rem',
+        fontSize: '0.9rem',
+        color: '#64748B',
         fontWeight: '500'
       }}>
-        <strong style={{ color: '#059669' }}>13 dispositivos em pipeline</strong> • 
-        <strong style={{ color: '#059669' }}> 2 já em operação</strong> na INDAB desde Q2 2025
+        {/* <strong style={{ color: '#0F1629' }}>13 dispositivos em pipeline</strong> • 
+        <strong style={{ color: '#0F1629' }}> 2 já em operação</strong> na INDAB desde Q2 2025 */}
       </div>
     </LogosContainer>
   );
