@@ -80,7 +80,7 @@ const AppContent = () => {
       <main style={{ marginTop: '80px' }}> {/* Compensar altura do header fixo */}
         <AppRoutes />
       </main>
-      {/* <Footer /> */}
+      <Footer />
       <ScrollToTopButton isFixed />
     </>
   );

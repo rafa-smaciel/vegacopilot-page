@@ -1,4 +1,4 @@
-// src/modules/Home/index.js - Estrutura Principal Modular
+// src/modules/Home/index.js - Estrutura Principal Modular ATIVADA
 // import { Link } from 'react-router-dom'; // ainda não usado
 // eslint-disable-line no-unused-vars
 import React, { useEffect } from 'react';
@@ -7,7 +7,7 @@ import { Container } from './globalStyles';
 // Importando containers existentes
 import HeroSection from './containers/HeroSection';
 import CompanyLogosSection from './containers/CompanyLogosSection';
-import PlantManagerSection from './containers/PlantManagerSection'; // ✨ NOVO
+import PlantManagerSection from './containers/PlantManagerSection';
 import ProductsSection from './containers/ProductsSection';
 import TechnologySection from './containers/TechnologySection';
 import IntegratedSystemSection from './containers/IntegratedSystemSection';
@@ -17,9 +17,9 @@ import TestimonialsSection from './containers/TestimonialsSection';
 import ROISection from './containers/ROISection';
 import NewsSection from './containers/NewsSection';
 import IndustriesSection from './containers/IndustriesSection';
-import PatentedTechSection from './containers/PatentedTechSection'; // ✨ NOVO
-import EcosystemSection from './containers/EcosystemSection'; // ✨ NOVO
-import CTAFormSection from './containers/CTAFormSection'; // ✨ NOVO
+import PatentedTechSection from './containers/PatentedTechSection';
+import EcosystemSection from './containers/EcosystemSection';
+import CTAFormSection from './containers/CTAFormSection';
 
 // Utilitário para animações
 import AnimateOnScroll from '../../utils/AnimateOnScroll';
@@ -51,44 +51,44 @@ export const Home = () => {
       {/* 2. Logos de Clientes - Credibilidade */}
       <CompanyLogosSection />
 
-      {/* 2.5. Gerente de Planta - CTA Intermediário ✅ IMPLEMENTADO */}
-      {/* <PlantManagerSection /> */}
+      {/* 2.5. Gerente de Planta - CTA Intermediário */}
+      <PlantManagerSection />
 
       {/* 3. Produtos Principais - Vega Copilot, Device Vega, Energy Efficiency */}
-      {/* <ProductsSection /> */}
+      <ProductsSection />
 
       {/* 4. Tecnologia/Engenharia - Cards com hover */}
-      {/* <TechnologySection /> */}
+      <TechnologySection />
 
       {/* 5. Sistema Integrado - Carrossel de funcionalidades */}
-      {/* <IntegratedSystemSection /> */}
+      <IntegratedSystemSection />
 
       {/* 6. Estudos de Caso - Abas com empresas */}
-      {/* <CaseStudySection /> */}
+      <CaseStudySection />
 
       {/* 7. Segurança - Certificações */}
-      {/* <SecuritySection /> */}
+      <SecuritySection />
 
       {/* 8. Depoimentos - Carrossel de clientes */}
-      {/* <TestimonialsSection /> */}
+      <TestimonialsSection />
 
       {/* 9. ROI AtlasIntel - Métricas de retorno */}
-      {/* <ROISection /> */}
+      <ROISection />
 
       {/* 10. Novidades - Desenvolvimentos recentes */}
-      {/* <NewsSection /> */}
+      <NewsSection />
 
-      {/* 11. Indústrias - Grid de setores ✅ IMPLEMENTADO */}
-      {/* <IndustriesSection /> */}
+      {/* 11. Indústrias - Grid de setores */}
+      <IndustriesSection />
 
-      {/* 12. Tecnologia Patenteada - 3 camadas IA ✅ IMPLEMENTADO */}
-      {/* <PatentedTechSection /> */}
+      {/* 12. Tecnologia Patenteada - 3 camadas IA */}
+      <PatentedTechSection />
 
-      {/* 13. Ecossistema - Parceiros SAP/Oracle/Siemens ✅ IMPLEMENTADO */}
-      {/* <EcosystemSection /> */}
+      {/* 13. Ecossistema - Parceiros SAP/Oracle/Siemens */}
+      <EcosystemSection />
 
-      {/* 14. CTA Form - Formulário + imagem do produto ✅ IMPLEMENTADO */}
-      {/* <CTAFormSection /> */}
+      {/* 14. CTA Form - Formulário + imagem do produto */}
+      <CTAFormSection />
 
       {/* AnimateOnScroll Component */}
       <AnimateOnScroll />

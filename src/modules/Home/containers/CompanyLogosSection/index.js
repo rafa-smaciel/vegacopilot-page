@@ -8,74 +8,95 @@ import {
   CompanyLogo
 } from './styles';
 
-import NVIDIA from '../../../../assets/parceiros/8.png';
-import INCAMP from '../../../../assets/parceiros/9.png';
-import UPLAB from '../../../../assets/parceiros/10.png';
-import USP from '../../../../assets/parceiros/13.png';
-import FIAP from '../../../../assets/parceiros/14.png';
-import UNIFESP from '../../../../assets/parceiros/12.png';
-
 const CompanyLogosSection = () => {
-  // Instituições e parceiros baseados no documento VIXEM
-  const institutionLogos = [
+  // Novas imagens de setores industriais
+  const industryLogos = [
     {
-      name: 'NVIDIA Inception Program',
-      image: NVIDIA,
-      featured: true // Parceiro estratégico principal
+      name: 'Aerospace & Defence',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/621d0e6d09c583009d2a0805_aerospace-defence_locate.webp',
+      featured: true
     },
     {
-      name: 'INCAMP Unicamp',
-      image: INCAMP,
-      featured: true // Incubadora
+      name: 'Automotive Industry',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/62195375e572c8f559fbed94_automotive_visual.webp',
+      featured: true
     },
     {
-      name: 'UpLab',
-      image: UPLAB,
-      featured: true // Aceleradora
+      name: 'Utilities & Energy',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/60494c3303fc9481ca8e1375_utilities_02.webp',
+      featured: true
     },
     {
-      name: 'USP',
-      image: USP,
+      name: 'Agriculture & Plant ID',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/5f792ff0cc9e36516de2dbeb_ag_plantid.webp',
+      featured: false
     },
     {
-      name: 'FIAP',
-      image: FIAP,
+      name: 'Manufacturing Solutions',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/601ef8cf8ea93152314013ba_manufacturing_02.webp',
+      featured: true
     },
     {
-      name: 'UNIFESP',
-      image: UNIFESP
+      name: 'Government Security',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/62193badc0fb0c21f13849bd_gov_security.webp',
+      featured: false
     },
+    {
+      name: 'Banking & Finance',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/6014a86f90820a0a00294a0a_banking_counterfeit.webp',
+      featured: false
+    },
+    {
+      name: 'Manufacturing Quality',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/601ef8cf9e66851919ce0b54_manufacturing_problem.webp',
+      featured: true
+    },
+    {
+      name: 'Government Training',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/621941d82071179b3ea316e9_gov_training.webp',
+      featured: false
+    },
+    {
+      name: 'Manufacturing Systems',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/601ef8cf39161b731ae80935_manufacturing_01.webp',
+      featured: true
+    },
+    {
+      name: 'E-commerce Solutions',
+      image: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5/60392b8e66f4e79e79c05cbf_ecommerce_01.webp',
+      featured: false
+    }
   ];
 
   return (
     <LogosContainer>
-      <LogosTitle>Instituições que nos Apoiam</LogosTitle>
+      <LogosTitle>Setores que Atendemos</LogosTitle>
       <LogosCarousel>
         <LogosTrack>
           {/* Primeiro conjunto para o carrossel infinito */}
-          {institutionLogos.map((institution, index) => (
+          {industryLogos.map((industry, index) => (
             <CompanyLogo 
               key={`first-${index}`}
-              src={institution.image}
-              alt={institution.name}
-              featured={institution.featured}
-              title={institution.name}
+              src={industry.image}
+              alt={industry.name}
+              featured={industry.featured}
+              title={industry.name}
             />
           ))}
           {/* Segundo conjunto para loop infinito */}
-          {institutionLogos.map((institution, index) => (
+          {industryLogos.map((industry, index) => (
             <CompanyLogo 
               key={`second-${index}`}
-              src={institution.image}
-              alt={institution.name}
-              featured={institution.featured}
-              title={institution.name}
+              src={industry.image}
+              alt={industry.name}
+              featured={industry.featured}
+              title={industry.name}
             />
           ))}
         </LogosTrack>
       </LogosCarousel>
       
-      {/* Informação sobre clientes e pipeline */}
+      {/* Informação sobre aplicações de IA */}
       <div style={{ 
         textAlign: 'center',
         marginTop: '2rem',
@@ -83,8 +104,8 @@ const CompanyLogosSection = () => {
         color: '#64748B',
         fontWeight: '500'
       }}>
-        {/* <strong style={{ color: '#0F1629' }}>13 dispositivos em pipeline</strong> • 
-        <strong style={{ color: '#0F1629' }}> 2 já em operação</strong> na INDAB desde Q2 2025 */}
+        <strong style={{ color: '#0F1629' }}>IA Aplicada em Múltiplos Setores</strong> • 
+        <strong style={{ color: '#0F1629' }}> Visão Computacional Industrial</strong>
       </div>
     </LogosContainer>
   );
