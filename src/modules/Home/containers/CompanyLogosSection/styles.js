@@ -1,32 +1,32 @@
-// src/modules/Home/containers/CompanyLogosSection/styles.js - UPDATED STYLES
+// src/modules/Home/containers/CompanyLogosSection/styles.js - MODERN INDUSTRY CARDS
 import styled, { keyframes } from 'styled-components';
 
-// PALETA DE CORES VIXEM - Consistente com HeroSection
+// PALETA DE CORES VIXEM - Atualizada
 const colors = {
-  // Cores principais do logo VIXEM - Azul escuro
-  primary: '#0F1629', // Azul muito escuro, quase navy
-  primaryDark: '#0A0F1C', // Azul extremamente escuro
-  primaryLight: '#1E293B', // Azul escuro para variações
+  // Cores principais - azul moderno
+  primary: '#1E40AF', // Azul principal
+  primaryDark: '#1E3A8A', // Azul escuro
+  primaryLight: '#3B82F6', // Azul claro
   
-  // Modulação de cinzas para hierarquia
-  textPrimary: '#0F172A', // Quase preto para textos principais
-  textSecondary: '#1E293B', // Cinza escuro para textos secundários
-  textMuted: '#64748B', // Cinza médio para textos auxiliares
-  textLight: '#94A3B8', // Cinza claro para placeholders
+  // Cores secundárias
+  secondary: '#1F2937', // Cinza escuro
+  accent: '#7C3AED', // Roxo
   
-  // Cores neutros
+  // Tons neutros modernos
   neutral50: '#F8FAFC',
   neutral100: '#F1F5F9',
   neutral200: '#E2E8F0',
-  neutral300: '#CBD5E0',
+  neutral300: '#CBD5E1',
+  neutral400: '#94A3B8',
   neutral500: '#64748B',
   neutral600: '#475569',
   neutral700: '#334155',
   neutral800: '#1E293B',
+  neutral900: '#0F172A',
   
   // Cores base
   white: '#FFFFFF',
-  black: '#0F172A'
+  black: '#000000'
 };
 
 const breakpoints = {
@@ -35,7 +35,7 @@ const breakpoints = {
   large: '1900px'
 };
 
-// Animação de scroll infinito mais suave
+// Animação de scroll infinito
 const scroll = keyframes`
   0% {
     transform: translateX(0);
@@ -45,114 +45,113 @@ const scroll = keyframes`
   }
 `;
 
+// Animação de float para elementos
+const float = keyframes`
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+`;
+
 export const LogosContainer = styled.section`
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   background: ${colors.white};
   text-align: center;
-  border-top: 1px solid ${colors.neutral100};
   overflow: hidden;
   position: relative;
 
-  /* Elemento decorativo bem sutil */
+  /* Gradiente sutil de fundo */
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: ${colors.textLight};
-    opacity: 0.4;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      ${colors.neutral50} 0%, 
+      ${colors.white} 50%, 
+      ${colors.neutral50} 100%
+    );
+    z-index: 1;
+  }
+
+  /* Conteúdo acima do gradiente */
+  > * {
+    position: relative;
+    z-index: 2;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    padding: 2.5rem 1rem;
+    padding: 3rem 1rem;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    padding: 4rem 4rem;
+    padding: 5rem 4rem;
   }
 `;
 
 export const LogosTitle = styled.h2`
-  font-size: 1.3rem;
-  color: ${colors.textSecondary};
-  margin-bottom: 3rem;
-  font-weight: 600;
+  font-size: 2rem;
+  color: ${colors.secondary};
+  margin-bottom: 3.5rem;
+  font-weight: 700;
   text-align: center;
   position: relative;
 
-  /* Linha decorativa mais sutil */
+  /* Linha decorativa moderna */
   &::after {
     content: '';
     position: absolute;
-    bottom: -15px;
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background: ${colors.textLight};
-    border-radius: 1px;
-    opacity: 0.6;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, ${colors.primary}, ${colors.accent});
+    border-radius: 2px;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    font-size: 1.4rem;
-    margin-bottom: 3.5rem;
+    font-size: 2.25rem;
+    margin-bottom: 4rem;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
   }
 `;
 
-// Carrossel com máscara aprimorada
 export const LogosCarousel = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
   
-  /* Máscara de fade mais suave */
+  /* Máscara de fade nas bordas */
   mask: linear-gradient(
     to right,
-    transparent,
-    ${colors.white} 10%,
-    ${colors.white} 90%,
-    transparent
+    transparent 0%,
+    ${colors.white} 5%,
+    ${colors.white} 95%,
+    transparent 100%
   );
   -webkit-mask: linear-gradient(
     to right,
-    transparent,
-    ${colors.white} 10%,
-    ${colors.white} 90%,
-    transparent
+    transparent 0%,
+    ${colors.white} 5%,
+    ${colors.white} 95%,
+    transparent 100%
   );
-
-  @media (max-width: ${breakpoints.mobile}) {
-    mask: linear-gradient(
-      to right,
-      transparent,
-      ${colors.white} 5%,
-      ${colors.white} 95%,
-      transparent
-    );
-    -webkit-mask: linear-gradient(
-      to right,
-      transparent,
-      ${colors.white} 5%,
-      ${colors.white} 95%,
-      transparent
-    );
-  }
 `;
 
 export const LogosTrack = styled.div`
   display: flex;
   align-items: center;
-  gap: 4rem;
-  animation: ${scroll} 35s linear infinite;
+  gap: 2rem;
+  animation: ${scroll} 40s linear infinite;
   width: max-content;
   
   &:hover {
@@ -160,44 +159,32 @@ export const LogosTrack = styled.div`
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    gap: 3rem;
-    animation-duration: 25s;
+    gap: 1.5rem;
+    animation-duration: 30s;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    gap: 5rem;
-    animation-duration: 45s;
+    gap: 2.5rem;
+    animation-duration: 50s;
   }
 `;
 
-export const CompanyLogo = styled.img`
-  height: 80px;
-  width: 120px;
-  opacity: 0.7;
-  transition: all 0.4s ease;
-  filter: grayscale(30%) brightness(1.1);
-  flex-shrink: 0;
-  object-fit: cover;
+export const IndustryCard = styled.div`
+  position: relative;
+  width: 200px;
+  height: 120px;
+  border-radius: 16px;
+  overflow: hidden;
   cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(15, 22, 41, 0.08);
-
-  &:hover {
-    opacity: 1;
-    transform: scale(1.05) translateY(-2px);
-    filter: grayscale(0%) brightness(1.2);
-    box-shadow: 0 4px 16px rgba(15, 22, 41, 0.15);
-  }
-
-  /* Imagens em destaque - um pouco mais visíveis */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  background: ${colors.white};
+  
+  /* Efeito de destaque para cards featured */
   ${props => props.featured && `
-    position: relative;
-    padding: 10px;
-    background: ${colors.neutral50};
-    border: 2px solid ${colors.neutral200};
-    box-shadow: 0 3px 12px rgba(15, 22, 41, 0.1);
-    opacity: 0.8;
-    border-radius: 12px;
+    border-color: ${colors.primary};
+    box-shadow: 0 8px 30px rgba(30, 64, 175, 0.15);
     
     &::before {
       content: '';
@@ -205,37 +192,92 @@ export const CompanyLogo = styled.img`
       top: 0;
       left: 0;
       right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, ${colors.primary}, ${colors.primaryLight});
-      border-radius: 12px 12px 0 0;
-    }
-    
-    &:hover {
-      border-color: ${colors.primary};
-      box-shadow: 0 6px 20px rgba(15, 22, 41, 0.2);
-      background: ${colors.white};
-      opacity: 1;
-      transform: scale(1.08) translateY(-4px);
+      height: 3px;
+      background: linear-gradient(90deg, ${colors.primary}, ${colors.accent});
+      z-index: 3;
     }
   `}
 
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(30, 64, 175, 0.2);
+    border-color: ${colors.primary};
+    animation: ${float} 2s ease-in-out infinite;
+  }
+
   @media (max-width: ${breakpoints.mobile}) {
-    height: 60px;
-    width: 90px;
-    opacity: 0.6;
+    width: 160px;
+    height: 100px;
     
-    ${props => props.featured && `
-      padding: 8px;
-      opacity: 0.75;
-    `}
+    &:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    height: 100px;
-    width: 150px;
-    
-    ${props => props.featured && `
-      padding: 12px;
-    `}
+    width: 240px;
+    height: 140px;
   }
 `;
+
+export const IndustryImage = styled.img`
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+  filter: brightness(0.9) saturate(0.8);
+
+  ${IndustryCard}:hover & {
+    filter: brightness(1.1) saturate(1.2);
+    transform: scale(1.05);
+  }
+`;
+
+export const IndustryLabel = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(
+    to top,
+    rgba(30, 64, 175, 0.95) 0%,
+    rgba(30, 64, 175, 0.8) 100%
+  );
+  color: ${colors.white};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0 0.5rem;
+  transition: all 0.3s ease;
+
+  ${IndustryCard}:hover & {
+    background: linear-gradient(
+      to top,
+      ${colors.primary} 0%,
+      rgba(30, 64, 175, 0.9) 100%
+    );
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 0.8rem;
+    
+    ${IndustryCard}:hover & {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (min-width: ${breakpoints.large}) {
+    font-size: 1rem;
+    
+    ${IndustryCard}:hover & {
+      font-size: 1.05rem;
+    }
+  }
+`;
+
+/* Elementos decorativos adicionais podem ser adicionados via pseudo-elementos no LogosContainer acima */
