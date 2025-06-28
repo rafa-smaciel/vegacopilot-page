@@ -1,8 +1,6 @@
-// src/modules/Home/index.js - Estrutura Principal Modular ATIVADA
-// import { Link } from 'react-router-dom'; // ainda não usado
-// eslint-disable-line no-unused-vars
+// src/modules/Home/index.js - ZERO ESPAÇOS GARANTIDO
 import React, { useEffect } from 'react';
-import { Container } from './globalStyles';
+import styled from 'styled-components';
 
 // Importando containers existentes
 import HeroSection from './containers/HeroSection';
@@ -21,8 +19,119 @@ import PatentedTechSection from './containers/PatentedTechSection';
 import EcosystemSection from './containers/EcosystemSection';
 import CTAFormSection from './containers/CTAFormSection';
 
-// Utilitário para animações
-import AnimateOnScroll from '../../utils/AnimateOnScroll';
+// Container principal ZERO gaps
+const NoGapsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  
+  /* Remove absolutamente TODOS os espaços */
+  > * {
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Seções grudadas - força zero gap */
+  > section {
+    margin: 0 !important;
+    display: block;
+  }
+  
+  /* Remove qualquer espaço entre elementos */
+  > * + * {
+    margin-top: 0 !important;
+  }
+`;
+
+// Wrapper que força padding específico sem afetar margins
+const SectionWrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  
+  /* Hero - sem padding vertical */
+  &.hero {
+    > section {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+  
+  /* Ultra compacto - logos e plant manager */
+  &.ultra-tight {
+    > section {
+      padding: 1rem 2rem !important;
+      margin: 0 !important;
+      
+      @media (max-width: 768px) {
+        padding: 0.8rem 1rem !important;
+      }
+      
+      @media (min-width: 1900px) {
+        padding: 1.5rem 4rem !important;
+      }
+    }
+  }
+  
+  /* Compacto - outras seções */
+  &.tight {
+    > section {
+      padding: 1.5rem 2rem !important;
+      margin: 0 !important;
+      
+      @media (max-width: 768px) {
+        padding: 1.2rem 1rem !important;
+      }
+      
+      @media (min-width: 1900px) {
+        padding: 2rem 4rem !important;
+      }
+    }
+  }
+  
+  /* CTA com mais espaço */
+  &.cta {
+    > section {
+      padding: 2rem 2rem !important;
+      margin: 0 !important;
+      
+      @media (max-width: 768px) {
+        padding: 1.5rem 1rem !important;
+      }
+      
+      @media (min-width: 1900px) {
+        padding: 3rem 4rem !important;
+      }
+    }
+  }
+`;
+
+// Reset global dentro do componente
+const GlobalReset = styled.div`
+  /* Reset completo */
+  margin: 0;
+  padding: 0;
+  
+  /* Remove gaps de todos os filhos */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Força sem espaços */
+  section {
+    margin: 0 !important;
+  }
+  
+  /* Remove espaços residuais */
+  > * + * {
+    margin-top: 0 !important;
+  }
+`;
 
 export const Home = () => {
   // Animação no scroll
@@ -43,56 +152,102 @@ export const Home = () => {
     return () => window.removeEventListener('scroll', animateOnScroll);
   }, []);
 
+  // Remove qualquer espaço do body quando componente monta
+  useEffect(() => {
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+    
+    // Remove gaps do container pai se existir
+    const mainContainer = document.querySelector('main');
+    if (mainContainer) {
+      mainContainer.style.margin = '0';
+      mainContainer.style.padding = '0';
+    }
+    
+    return () => {
+      // Cleanup se necessário
+    };
+  }, []);
+
   return (
-    <Container>
-      {/* 1. Hero Principal - IA Forbes AI 50 */}
-      <HeroSection />
+    <GlobalReset className="tight-layout">
+      <NoGapsContainer className="no-gaps">
+        {/* 1. Hero Principal - SEM espaços */}
+        <SectionWrapper className="hero">
+          <HeroSection />
+        </SectionWrapper>
 
-      {/* 2. Logos de Clientes - Credibilidade */}
-      <CompanyLogosSection />
+        {/* 2. Logos - Grudado no Hero */}
+        <SectionWrapper className="ultra-tight">
+          <CompanyLogosSection />
+        </SectionWrapper>
 
-      {/* 2.5. Gerente de Planta - CTA Intermediário */}
-      <PlantManagerSection />
+        {/* 3. Plant Manager - Grudado nos Logos */}
+        <SectionWrapper className="ultra-tight">
+          <PlantManagerSection />
+        </SectionWrapper>
 
-      {/* 3. Produtos Principais - Vega Copilot, Device Vega, Energy Efficiency */}
-      <ProductsSection />
+        {/* 4. Produtos - Compacto */}
+        <SectionWrapper className="tight">
+          <ProductsSection />
+        </SectionWrapper>
 
-      {/* 4. Tecnologia/Engenharia - Cards com hover */}
-      <TechnologySection />
+        {/* 5. Tecnologia - Compacto */}
+        <SectionWrapper className="tight">
+          <TechnologySection />
+        </SectionWrapper>
 
-      {/* 5. Sistema Integrado - Carrossel de funcionalidades */}
-      <IntegratedSystemSection />
+        {/* 6. Sistema Integrado - Compacto */}
+        <SectionWrapper className="tight">
+          <IntegratedSystemSection />
+        </SectionWrapper>
 
-      {/* 6. Estudos de Caso - Abas com empresas */}
-      <CaseStudySection />
+        {/* 7. Estudos de Caso - Compacto */}
+        <SectionWrapper className="tight">
+          <CaseStudySection />
+        </SectionWrapper>
 
-      {/* 7. Segurança - Certificações */}
-      <SecuritySection />
+        {/* 8. Segurança - Compacto */}
+        <SectionWrapper className="tight">
+          <SecuritySection />
+        </SectionWrapper>
 
-      {/* 8. Depoimentos - Carrossel de clientes */}
-      <TestimonialsSection />
+        {/* 9. Depoimentos - Compacto */}
+        <SectionWrapper className="tight">
+          <TestimonialsSection />
+        </SectionWrapper>
 
-      {/* 9. ROI AtlasIntel - Métricas de retorno */}
-      <ROISection />
+        {/* 10. ROI - Compacto */}
+        <SectionWrapper className="tight">
+          <ROISection />
+        </SectionWrapper>
 
-      {/* 10. Novidades - Desenvolvimentos recentes */}
-      <NewsSection />
+        {/* 11. Novidades - Compacto */}
+        <SectionWrapper className="tight">
+          <NewsSection />
+        </SectionWrapper>
 
-      {/* 11. Indústrias - Grid de setores */}
-      <IndustriesSection />
+        {/* 12. Indústrias - Compacto */}
+        <SectionWrapper className="tight">
+          <IndustriesSection />
+        </SectionWrapper>
 
-      {/* 12. Tecnologia Patenteada - 3 camadas IA */}
-      <PatentedTechSection />
+        {/* 13. Tecnologia Patenteada - Compacto */}
+        <SectionWrapper className="tight">
+          <PatentedTechSection />
+        </SectionWrapper>
 
-      {/* 13. Ecossistema - Parceiros SAP/Oracle/Siemens */}
-      <EcosystemSection />
+        {/* 14. Ecossistema - Compacto */}
+        <SectionWrapper className="tight">
+          <EcosystemSection />
+        </SectionWrapper>
 
-      {/* 14. CTA Form - Formulário + imagem do produto */}
-      <CTAFormSection />
-
-      {/* AnimateOnScroll Component */}
-      <AnimateOnScroll />
-    </Container>
+        {/* 15. CTA Form - Mais espaço */}
+        <SectionWrapper className="cta">
+          <CTAFormSection />
+        </SectionWrapper>
+      </NoGapsContainer>
+    </GlobalReset>
   );
 };
 
