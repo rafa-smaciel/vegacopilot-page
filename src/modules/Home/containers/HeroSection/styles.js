@@ -1,4 +1,4 @@
-// src/modules/Home/containers/HeroSection/styles.js - OTIMIZADO UX
+// src/modules/Home/containers/HeroSection/styles.js - PROPORÇÃO VIXEM/TRACTIAN
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -31,12 +31,14 @@ const fadeInUp = keyframes`
   }
 `;
 
-// ===== CONTAINER PRINCIPAL - ESPAÇOS MÍNIMOS =====
+// ===== CONTAINER PRINCIPAL - PROPORÇÃO EXATA VIXEM/TRACTIAN =====
 export const HeroContainer = styled.section`
-  min-height: 80vh;
+  /* Altura fixa para manter proporção das imagens */
+  height: 100vh;
+  width: 100vw;
   background: ${colors.white};
   display: flex;
-  align-items: flex-start;
+  align-items: stretch; /* Estica filhos para altura total */
   justify-content: center;
   padding: 0;
   margin: 0;
@@ -44,176 +46,187 @@ export const HeroContainer = styled.section`
   overflow: hidden;
   
   @media (max-width: ${breakpoints.mobile}) {
-    min-height: 70vh;
-    padding: 1.5rem 0;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    min-height: 75vh;
-    padding: 1.8rem 0;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    min-height: 85vh;
-    padding: 2.5rem 0;
+    height: 100vh;
+    width: 100vw;
   }
 `;
 
-// ===== CONTENT - PADDING OTIMIZADO =====
+// ===== CONTENT - GRID EXATO 50/50 COMO VIXEM/TRACTIAN =====
 export const HeroContent = styled.div`
-  max-width: none;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 1rem;
-  align-items: flex-start;
+  grid-template-columns: 1fr 1fr; /* Exatos 50% cada lado */
+  gap: 0;
+  align-items: stretch; /* Estica para altura total */
   z-index: 2;
   position: relative;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   padding: 0;
+  margin: 0;
 
   @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-rows: 1fr 1fr; /* Stack vertical em mobile */
+    gap: 0;
     text-align: center;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     padding: 0;
-    height: auto;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    gap: 0.5rem;
-    width: 100%;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+    width: 100vw;
+    height: 100vh;
     padding: 0;
-    height: auto;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    max-width: none;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
     padding: 0;
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
   }
 `;
 
 export const HeroText = styled.div`
   animation: ${fadeInUp} 0.8s ease-out;
-  padding: 2rem 1rem 1rem 3rem;
+  padding: 4rem 3rem 4rem 6rem; /* Padding mais generoso à esquerda */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 80vh;
-  max-width: none;
+  height: 100vh; /* Altura total */
+  background: ${colors.white};
 
   @media (max-width: ${breakpoints.tablet}) {
     order: 2;
-    height: auto;
-    padding: 2rem;
+    height: 50vh; /* Metade da tela em mobile */
+    padding: 2rem 3rem;
     text-align: center;
+    justify-content: center;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    padding: 1.5rem;
+    padding: 1.5rem 2rem;
+    height: 50vh;
+  }
+
+  @media (min-width: ${breakpoints.large}) {
+    padding: 6rem 4rem 6rem 8rem;
+    height: 100vh;
   }
 `;
 
 export const SustainabilityBadge = styled.div`
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
   background: rgba(30, 64, 175, 0.08);
   border: 1px solid rgba(30, 64, 175, 0.2);
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
   font-weight: 600;
   color: ${colors.primary};
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.5rem;
   width: fit-content;
 
   svg {
     color: ${colors.primary};
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 0.65rem;
-    padding: 0.25rem 0.5rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 1rem;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin: 0 auto 0.6rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  @media (min-width: ${breakpoints.large}) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 `;
 
-// ===== TÍTULO OTIMIZADO PARA UX =====
+// ===== TÍTULO - TAMANHO SIMILAR AO VIXEM =====
 export const HeroTitle = styled.h1`
-  /* Tamanho responsivo otimizado para legibilidade */
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  font-weight: 700; /* Reduzido de 800 para melhor legibilidade */
-  line-height: 1.3; /* Melhorado para leitura */
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Maior como no VIXEM */
+  font-weight: 800;
+  line-height: 1.1;
   color: ${colors.black};
-  margin-bottom: 0.6rem;
-  letter-spacing: -0.015em; /* Reduzido para melhor legibilidade */
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
   
-  /* Melhor hierarquia visual */
   .highlight {
     color: ${colors.primary};
-    font-weight: 800; /* Destaque apenas no highlight */
+    font-weight: 900; /* Mais peso no destaque */
   }
 
-  /* Quebras de linha otimizadas para mobile */
   @media (max-width: ${breakpoints.mobile}) {
-    margin-bottom: 0.4rem;
-    font-size: clamp(1.2rem, 4vw, 1.5rem);
-    line-height: 1.25;
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    line-height: 1.15;
     
     br {
-      display: none; /* Remove quebras forçadas no mobile */
+      display: none;
     }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    font-size: 2rem;
-    margin-bottom: 0.8rem;
-    line-height: 1.2;
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.05;
   }
 `;
 
 export const HeroSubtitle = styled.p`
-  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem); /* Maior como no VIXEM */
   color: ${colors.neutral600};
-  line-height: 1.5; /* Otimizado para leitura */
-  margin-bottom: 1rem;
-  max-width: 420px; /* Linha ideal para leitura */
-  
-  /* Melhor contraste e legibilidade */
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 500px; /* Linha ótima para leitura */
   font-weight: 400;
 
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 100%;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    font-size: 1.05rem;
-    max-width: 460px;
-    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    max-width: 550px;
+    margin-bottom: 2.5rem;
   }
 `;
 
 export const HeroStats = styled.div`
   display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
+  gap: 2rem;
+  margin: 2rem 0;
 
   @media (max-width: ${breakpoints.mobile}) {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.6rem;
-    margin: 0.8rem 0;
+    gap: 1rem;
+    margin: 1.5rem 0;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -221,53 +234,53 @@ export const HeroStats = styled.div`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    gap: 1.2rem;
-    margin: 1.2rem 0;
+    gap: 2.5rem;
+    margin: 2.5rem 0;
   }
 `;
 
 export const Stat = styled.div`
   text-align: center;
-  min-width: 65px;
+  min-width: 80px;
 
   .number {
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
     font-weight: 800;
     color: ${colors.primary};
     display: block;
     line-height: 1;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
   }
 
   .label {
-    font-size: clamp(0.6rem, 1vw, 0.68rem);
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
     color: ${colors.neutral500};
     font-weight: 600;
     display: block;
-    line-height: 1.2;
+    line-height: 1.3;
   }
 
   @media (min-width: ${breakpoints.large}) {
     .number {
-      font-size: 1.2rem;
-      margin-bottom: 0.25rem;
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
     }
     .label {
-      font-size: 0.72rem;
+      font-size: 0.9rem;
     }
   }
 `;
 
 export const HeroButtons = styled.div`
   display: flex;
-  gap: 0.6rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  margin-top: 2rem;
 
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.8rem;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -275,48 +288,48 @@ export const HeroButtons = styled.div`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    gap: 0.8rem;
-    margin-top: 1.2rem;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
   }
 `;
 
-// ===== BOTÕES OTIMIZADOS =====
+// ===== BOTÕES - TAMANHOS GENEROSOS COMO VIXEM =====
 export const PrimaryButton = styled(Link)`
   background: ${colors.primary} !important;
   color: ${colors.white} !important;
-  padding: 0.55rem 1.1rem; /* Reduzido para melhor proporção */
-  border-radius: 4px;
+  padding: 1rem 2rem;
+  border-radius: 6px;
   text-decoration: none !important;
   font-weight: 600;
-  font-size: 0.78rem; /* Otimizado para legibilidade */
+  font-size: 1rem;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
   border: 2px solid ${colors.primary} !important;
   white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(30, 64, 175, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25) !important;
 
   &:hover {
     background: ${colors.primaryDark} !important;
     color: ${colors.white} !important;
     border-color: ${colors.primaryDark} !important;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(30, 64, 175, 0.35) !important;
     text-decoration: none !important;
   }
 
   svg {
     color: ${colors.white} !important;
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
-    max-width: 200px;
+    max-width: 250px;
     justify-content: center;
-    font-size: 0.74rem;
-    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+    padding: 0.9rem 1.5rem;
     
     &:hover {
       transform: none;
@@ -324,43 +337,43 @@ export const PrimaryButton = styled(Link)`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    padding: 0.65rem 1.3rem;
-    font-size: 0.82rem;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
   }
 `;
 
 export const SecondaryButton = styled(Link)`
   background: transparent;
   color: ${colors.primary};
-  padding: 0.55rem 1.1rem;
+  padding: 1rem 2rem;
   border: 2px solid ${colors.primary};
-  border-radius: 4px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.78rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
   white-space: nowrap;
 
   &:hover {
     background: ${colors.primary};
     color: ${colors.white};
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
   }
 
   svg {
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
-    max-width: 200px;
+    max-width: 250px;
     justify-content: center;
-    font-size: 0.74rem;
-    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+    padding: 0.9rem 1.5rem;
     
     &:hover {
       transform: none;
@@ -368,25 +381,36 @@ export const SecondaryButton = styled(Link)`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    padding: 0.65rem 1.3rem;
-    font-size: 0.82rem;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
   }
 `;
 
-// ===== VISUAL OTIMIZADO =====
+// ===== VISUAL - EXATOS 50% DA TELA COMO VIXEM/TRACTIAN =====
 export const HeroVisual = styled.div`
   position: relative;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  height: 80vh;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Altura total fixa */
   width: 100%;
-  margin-left: auto;
+  background: ${colors.black}; /* Fundo escuro como nas imagens */
+  overflow: hidden;
 
   @media (max-width: ${breakpoints.tablet}) {
     order: 1;
-    height: 40vh;
-    justify-content: center;
+    height: 50vh; /* Metade da tela em mobile */
+    width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 50vh;
+    width: 100%;
+  }
+
+  @media (min-width: ${breakpoints.large}) {
+    height: 100vh;
+    width: 100%;
   }
 `;
 
@@ -396,45 +420,46 @@ export const VideoContainer = styled.div`
   overflow: hidden;
   box-shadow: none;
   background: ${colors.black};
-  width: 70%;
-  height: 80vh;
+  width: 100%;
+  height: 100vh; /* Altura total fixa */
   margin: 0;
   border: none;
-  aspect-ratio: unset;
-  margin-left: auto;
   
   video, img {
     width: 100%;
-    height: 80vh;
+    height: 100vh;
     display: block;
-    object-fit: contain;
-  }
-
-  &:hover {
-    box-shadow: none;
-    transform: none;
-    transition: none;
+    object-fit: cover; /* Cover para preencher toda a área */
+    object-position: center; /* Centraliza o conteúdo */
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    border-radius: 0;
-    max-width: 100%;
-    height: 40vh;
-    width: 80%;
+    height: 50vh;
+    width: 100%;
     
     video, img {
-      height: 40vh;
+      height: 50vh;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 50vh;
+    width: 100%;
+    
+    video, img {
+      height: 50vh;
+      width: 100%;
     }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    max-width: 100%;
-    border-radius: 0;
-    height: 80vh;
-    width: 70%;
+    height: 100vh;
+    width: 100%;
     
     video, img {
-      height: 80vh;
+      height: 100vh;
+      width: 100%;
     }
   }
 `;
@@ -445,7 +470,7 @@ export const VideoOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(30, 64, 175, 0.02);
+  background: rgba(30, 64, 175, 0.03);
   z-index: 2;
   display: flex;
   align-items: center;
@@ -463,30 +488,30 @@ export const VideoOverlay = styled.div`
 `;
 
 export const VideoPlayButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: ${colors.white};
-  border: 2px solid ${colors.primary};
+  border: 3px solid ${colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
   color: ${colors.primary};
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   
   &:hover {
     background: ${colors.primary};
     color: ${colors.white};
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(30, 64, 175, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(30, 64, 175, 0.3);
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    width: 36px;
-    height: 36px;
-    font-size: 0.8rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
     
     &:hover {
       transform: none;
@@ -494,168 +519,62 @@ export const VideoPlayButton = styled.button`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    width: 44px;
-    height: 44px;
-    font-size: 1rem;
+    width: 70px;
+    height: 70px;
+    font-size: 1.4rem;
   }
 `;
 
 export const VideoStats = styled.div`
   position: absolute;
-  bottom: 8px;
-  right: 8px;
+  bottom: 20px;
+  right: 20px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 8px;
   z-index: 3;
   
   .stat {
     background: rgba(15, 23, 42, 0.9);
     color: ${colors.white};
-    padding: 3px 6px;
-    border-radius: 3px;
-    font-size: 0.68rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 8px;
     backdrop-filter: blur(10px);
-    border-left: 2px solid ${colors.primary};
+    border-left: 3px solid ${colors.primary};
     
     .label {
       color: rgba(255, 255, 255, 0.8);
-      font-size: 0.62rem;
+      font-size: 0.8rem;
     }
     
     .value {
       font-weight: 600;
       color: ${colors.white};
-      font-size: 0.68rem;
-    }
-  }
-
-  @media (max-width: ${breakpoints.mobile}) {
-    bottom: 6px;
-    right: 6px;
-    
-    .stat {
-      padding: 2px 5px;
-      font-size: 0.62rem;
-    }
-  }
-
-  @media (min-width: ${breakpoints.large}) {
-    bottom: 10px;
-    right: 10px;
-    
-    .stat {
-      padding: 4px 8px;
-      font-size: 0.72rem;
-    }
-  }
-`;
-
-export const MockupContainer = styled.div`
-  background: ${colors.primary};
-  border-radius: 6px;
-  padding: 1rem;
-  box-shadow: 0 6px 16px rgba(30, 64, 175, 0.1);
-  position: relative;
-  overflow: hidden;
-  max-width: 460px;
-  margin: 0 auto;
-
-  @media (max-width: ${breakpoints.mobile}) {
-    padding: 0.8rem;
-    border-radius: 4px;
-    max-width: 100%;
-  }
-
-  @media (min-width: ${breakpoints.large}) {
-    max-width: 520px;
-    padding: 1.2rem;
-    border-radius: 8px;
-  }
-`;
-
-export const MockupContent = styled.div`
-  background: ${colors.white};
-  border-radius: 4px;
-  padding: 0.8rem;
-  color: ${colors.secondary};
-  position: relative;
-  z-index: 2;
-
-  .title {
-    font-size: 0.8rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: ${colors.black};
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .metric {
-    text-align: center;
-    padding: 0.4rem;
-    background: rgba(30, 64, 175, 0.05);
-    border-radius: 3px;
-    border: 1px solid rgba(30, 64, 175, 0.1);
-
-    .value {
       font-size: 0.85rem;
-      font-weight: 800;
-      color: ${colors.primary};
-      margin-bottom: 0.1rem;
-      line-height: 1;
     }
-
-    .label {
-      font-size: 0.55rem;
-      color: ${colors.neutral500};
-      line-height: 1.2;
-    }
-  }
-
-  .status {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    color: ${colors.success};
-    font-size: 0.7rem;
-    font-weight: 600;
-    justify-content: center;
-    padding: 0.25rem;
-    background: rgba(16, 185, 129, 0.1);
-    border-radius: 3px;
-    border: 1px solid rgba(16, 185, 129, 0.2);
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    padding: 0.6rem;
+    bottom: 15px;
+    right: 15px;
     
-    .title {
-      font-size: 0.75rem;
+    .stat {
+      padding: 6px 10px;
+      font-size: 0.8rem;
     }
+  }
+
+  @media (min-width: ${breakpoints.large}) {
+    bottom: 30px;
+    right: 30px;
     
-    .metric {
-      .value {
-        font-size: 0.8rem;
-      }
-      .label {
-        font-size: 0.5rem;
-      }
-    }
-    
-    .status {
-      font-size: 0.65rem;
+    .stat {
+      padding: 10px 15px;
+      font-size: 0.9rem;
     }
   }
 `;

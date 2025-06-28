@@ -1,4 +1,4 @@
-// src/modules/Home/containers/HeroSection/index.js - COM VÍDEO DA TRACTIAN
+// src/modules/Home/containers/HeroSection/index.js - PROPORÇÃO VIXEM/TRACTIAN
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -48,6 +48,7 @@ const HeroSection = () => {
   return (
     <HeroContainer>
       <HeroContent>
+        {/* LADO ESQUERDO - TEXTO (50% da tela) */}
         <HeroText>
           <SustainabilityBadge>
             <FaEye />
@@ -86,6 +87,7 @@ const HeroSection = () => {
           </HeroButtons>
         </HeroText>
         
+        {/* LADO DIREITO - VISUAL (50% da tela) */}
         <HeroVisual>
           <VideoContainer>
             <VideoOverlay>
@@ -94,7 +96,7 @@ const HeroSection = () => {
               </VideoPlayButton>
             </VideoOverlay>
             
-            {/* Vídeo da Tractian */}
+            {/* Vídeo da Tractian ou imagem similar ao VIXEM */}
             <video
               autoPlay
               muted
@@ -104,13 +106,25 @@ const HeroSection = () => {
               style={{ 
                 width: '100%',
                 height: '100%',
-                objectFit: 'contain'
+                objectFit: 'cover', // Garante que preencha toda a área
+                objectPosition: 'center' // Centraliza o conteúdo
               }}
             >
               <source src="https://imgix.tractian.com/videos/homepage/US-Web-Header-Home-V3-Optimized.mp4" type="video/mp4" />
-              Seu navegador não suporta o elemento de vídeo.
+              {/* Fallback para imagem caso o vídeo não carregue */}
+              <img 
+                src="https://via.placeholder.com/800x600?text=VIXEM+Industrial+Vision&color=ffffff&background=1a1a2e" 
+                alt="VIXEM Industrial Vision" 
+                style={{ 
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center'
+                }}
+              />
             </video>
             
+            {/* Stats overlay no canto inferior direito */}
             <VideoStats>
               <div className="stat">
                 <span className="label">Uptime:</span>
