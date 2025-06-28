@@ -31,12 +31,12 @@ const fadeInUp = keyframes`
   }
 `;
 
-// ===== CONTAINER PRINCIPAL - ALTURA AJUSTADA =====
+// ===== CONTAINER PRINCIPAL - ALTURA REDUZIDA =====
 export const HeroContainer = styled.section`
-  /* ALTURA AJUSTADA: 80vh para mais espaço */
-  height: 80vh;
-  min-height: 650px; /* Altura mínima aumentada */
-  max-height: 850px; /* Altura máxima aumentada */
+  /* ALTURA REDUZIDA: Remove espaços em branco */
+  height: 65vh;
+  min-height: 500px; /* Altura mínima reduzida */
+  max-height: 650px; /* Altura máxima reduzida */
   width: 100vw;
   background: ${colors.white};
   display: flex;
@@ -48,23 +48,23 @@ export const HeroContainer = styled.section`
   overflow: hidden;
   
   @media (max-width: ${breakpoints.mobile}) {
-    height: 75vh;
-    min-height: 550px;
+    height: 60vh;
+    min-height: 450px;
     flex-direction: column;
     align-items: center;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    height: 75vh;
-    min-height: 600px;
+    height: 62vh;
+    min-height: 480px;
     flex-direction: column;
     align-items: center;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    height: 85vh;
-    min-height: 750px;
-    max-height: 950px;
+    height: 70vh;
+    min-height: 550px;
+    max-height: 700px;
   }
 `;
 
@@ -140,46 +140,46 @@ export const HeroText = styled.div`
 export const SustainabilityBadge = styled.div`
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   background: rgba(30, 64, 175, 0.08);
   border: 1px solid rgba(30, 64, 175, 0.2);
-  padding: 0.4rem 0.8rem; /* REDUZIDO */
+  padding: 0.3rem 0.7rem; /* REDUZIDO */
   border-radius: 6px;
-  font-size: 0.8rem; /* MENOR */
+  font-size: 0.75rem; /* MENOR */
   font-weight: 600;
   color: ${colors.primary};
-  margin-bottom: 1rem; /* REDUZIDO */
+  margin-bottom: 0.8rem; /* REDUZIDO */
   width: fit-content;
 
   svg {
     color: ${colors.primary};
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.7rem;
-    margin-bottom: 0.8rem;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.6rem;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin: 0 auto 1rem;
+    margin: 0 auto 0.8rem;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    margin-bottom: 1.2rem;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
   }
 `;
 
 // ===== TÍTULO - TAMANHO REDUZIDO =====
 export const HeroTitle = styled.h1`
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem); /* MUITO MENOR */
+  font-size: clamp(1.3rem, 2.8vw, 1.9rem); /* MUITO MENOR */
   font-weight: 800;
   line-height: 1.1;
   color: ${colors.black};
-  margin-bottom: 0.8rem; /* REDUZIDO */
+  margin-bottom: 0.6rem; /* REDUZIDO */
   letter-spacing: -0.02em;
   
   .highlight {
@@ -188,8 +188,8 @@ export const HeroTitle = styled.h1`
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    margin-bottom: 0.6rem;
-    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    margin-bottom: 0.4rem;
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
     line-height: 1.15;
     
     br {
@@ -198,43 +198,43 @@ export const HeroTitle = styled.h1`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    font-size: 2.8rem; /* MENOR que os 3.5rem anteriores */
-    margin-bottom: 1rem;
+    font-size: 2.2rem; /* MENOR que os 2.8rem anteriores */
+    margin-bottom: 0.8rem;
     line-height: 1.05;
   }
 `;
 
 export const HeroSubtitle = styled.p`
-  font-size: clamp(0.9rem, 1.3vw, 1rem); /* MUITO REDUZIDO */
+  font-size: clamp(0.8rem, 1.1vw, 0.9rem); /* MUITO REDUZIDO */
   color: ${colors.neutral600};
   line-height: 1.5;
-  margin-bottom: 1.2rem; /* REDUZIDO */
-  max-width: 420px; /* MENOR */
+  margin-bottom: 1rem; /* REDUZIDO */
+  max-width: 380px; /* MENOR */
   font-weight: 400;
 
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    font-size: 1.1rem;
-    max-width: 460px;
-    margin-bottom: 1.4rem;
+    font-size: 1rem;
+    max-width: 420px;
+    margin-bottom: 1.2rem;
   }
 `;
 
 // ===== STATS - MAIS COMPACTOS =====
 export const HeroStats = styled.div`
   display: flex;
-  gap: 1.2rem; /* REDUZIDO */
-  margin: 1.2rem 0; /* REDUZIDO */
+  gap: 1rem; /* REDUZIDO */
+  margin: 1rem 0; /* REDUZIDO */
 
   @media (max-width: ${breakpoints.mobile}) {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.8rem;
-    margin: 0.8rem 0;
+    gap: 0.6rem;
+    margin: 0.6rem 0;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -242,26 +242,26 @@ export const HeroStats = styled.div`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    gap: 1.6rem;
-    margin: 1.6rem 0;
+    gap: 1.3rem;
+    margin: 1.3rem 0;
   }
 `;
 
 export const Stat = styled.div`
   text-align: center;
-  min-width: 60px; /* MENOR */
+  min-width: 55px; /* MENOR */
 
   .number {
-    font-size: clamp(1.1rem, 1.8vw, 1.4rem); /* MENOR */
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem); /* MENOR */
     font-weight: 800;
     color: ${colors.primary};
     display: block;
     line-height: 1;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
   }
 
   .label {
-    font-size: clamp(0.65rem, 0.9vw, 0.75rem); /* MENOR */
+    font-size: clamp(0.6rem, 0.8vw, 0.7rem); /* MENOR */
     color: ${colors.neutral500};
     font-weight: 600;
     display: block;
@@ -270,11 +270,11 @@ export const Stat = styled.div`
 
   @media (min-width: ${breakpoints.large}) {
     .number {
-      font-size: 1.6rem;
-      margin-bottom: 0.4rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
     }
     .label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
   }
 `;
@@ -282,14 +282,14 @@ export const Stat = styled.div`
 // ===== BOTÕES - TAMANHOS REDUZIDOS =====
 export const HeroButtons = styled.div`
   display: flex;
-  gap: 0.6rem; /* REDUZIDO */
-  margin-top: 1.2rem; /* REDUZIDO */
+  gap: 0.5rem; /* REDUZIDO */
+  margin-top: 1rem; /* REDUZIDO */
 
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -297,47 +297,47 @@ export const HeroButtons = styled.div`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    gap: 0.8rem;
-    margin-top: 1.6rem;
+    gap: 0.7rem;
+    margin-top: 1.4rem;
   }
 `;
 
 export const PrimaryButton = styled(Link)`
   background: ${colors.primary} !important;
   color: ${colors.white} !important;
-  padding: 0.7rem 1.4rem; /* REDUZIDO */
+  padding: 0.6rem 1.2rem; /* REDUZIDO */
   border-radius: 6px;
   text-decoration: none !important;
   font-weight: 600;
-  font-size: 0.85rem; /* MENOR */
+  font-size: 0.8rem; /* MENOR */
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
   border: 2px solid ${colors.primary} !important;
   white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(30, 64, 175, 0.15) !important; /* MENOR */
+  box-shadow: 0 1px 4px rgba(30, 64, 175, 0.12) !important; /* MENOR */
 
   &:hover {
     background: ${colors.primaryDark} !important;
     color: ${colors.white} !important;
     border-color: ${colors.primaryDark} !important;
-    transform: translateY(-1px); /* MENOR */
-    box-shadow: 0 3px 8px rgba(30, 64, 175, 0.25) !important;
+    transform: translateY(-0.5px); /* MENOR */
+    box-shadow: 0 2px 6px rgba(30, 64, 175, 0.2) !important;
     text-decoration: none !important;
   }
 
   svg {
     color: ${colors.white} !important;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
     justify-content: center;
-    font-size: 0.8rem;
-    padding: 0.65rem 1.2rem;
+    font-size: 0.75rem;
+    padding: 0.55rem 1rem;
     
     &:hover {
       transform: none;
@@ -345,43 +345,43 @@ export const PrimaryButton = styled(Link)`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    padding: 0.8rem 1.6rem;
-    font-size: 0.9rem;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.85rem;
   }
 `;
 
 export const SecondaryButton = styled(Link)`
   background: transparent;
   color: ${colors.primary};
-  padding: 0.7rem 1.4rem; /* REDUZIDO */
+  padding: 0.6rem 1.2rem; /* REDUZIDO */
   border: 2px solid ${colors.primary};
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.85rem; /* MENOR */
+  font-size: 0.8rem; /* MENOR */
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
   white-space: nowrap;
 
   &:hover {
     background: ${colors.primary};
     color: ${colors.white};
-    transform: translateY(-1px); /* MENOR */
-    box-shadow: 0 2px 6px rgba(30, 64, 175, 0.15);
+    transform: translateY(-0.5px); /* MENOR */
+    box-shadow: 0 1px 4px rgba(30, 64, 175, 0.12);
   }
 
   svg {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
     justify-content: center;
-    font-size: 0.8rem;
-    padding: 0.65rem 1.2rem;
+    font-size: 0.75rem;
+    padding: 0.55rem 1rem;
     
     &:hover {
       transform: none;
@@ -389,8 +389,8 @@ export const SecondaryButton = styled(Link)`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    padding: 0.8rem 1.6rem;
-    font-size: 0.9rem;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.85rem;
   }
 `;
 

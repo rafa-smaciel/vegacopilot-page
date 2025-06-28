@@ -230,64 +230,64 @@ export const Home = () => {
         </SectionWrapper>
 
         {/* 4. PRODUTOS - Padding reduzido (Tractian) */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <ProductsSection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 5. TECNOLOGIA - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <TechnologySection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 6. SISTEMA INTEGRADO - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <IntegratedSystemSection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 7. ESTUDOS DE CASO - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <CaseStudySection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 8. SEGURANÇA - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <SecuritySection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 9. DEPOIMENTOS - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <TestimonialsSection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 10. ROI - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <ROISection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 11. NOVIDADES - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <NewsSection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 12. INDÚSTRIAS - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <IndustriesSection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 13. TECNOLOGIA PATENTEADA - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <PatentedTechSection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 14. ECOSSISTEMA - Padding reduzido */}
-        <SectionWrapper className="normal">
+        {/* <SectionWrapper className="normal">
           <EcosystemSection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
         {/* 15. CTA FORM - Compacto */}
-        <SectionWrapper className="cta">
+        {/* <SectionWrapper className="cta">
           <CTAFormSection />
-        </SectionWrapper>
+        </SectionWrapper> */}
       </TractianContainer>
     </TractianReset>
   );
