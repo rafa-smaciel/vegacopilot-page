@@ -1,4 +1,4 @@
-// src/modules/Home/containers/HeroSection/index.js
+// src/modules/Home/containers/HeroSection/index.js - COM VÍDEO DA TRACTIAN
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -17,9 +17,7 @@ import {
   VideoContainer,
   VideoOverlay,
   VideoPlayButton,
-  VideoStats,
-  MockupContainer,
-  MockupContent
+  VideoStats
 } from './styles';
 
 import { 
@@ -32,9 +30,6 @@ import {
   FaEye,
   FaCog
 } from 'react-icons/fa';
-
-// Placeholder para vídeo do VIXEM - substitua pelo caminho correto quando disponível
-import vixemHeroVideo from '../../../../assets/vixem-hero.mp4';
 
 const HeroSection = () => {
   const [videoPlaying, setVideoPlaying] = useState(false);
@@ -99,23 +94,20 @@ const HeroSection = () => {
               </VideoPlayButton>
             </VideoOverlay>
             
-            {/* Placeholder de vídeo do VIXEM - substitua pela URL ou caminho correto */}
+            {/* Vídeo da Tractian */}
             <video
               autoPlay
               muted
               loop
               playsInline
               controls={false}
-              poster="https://via.placeholder.com/800x450/C41E3A/FFFFFF?text=VIXEM+Demo"
               style={{ 
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover'
+                objectFit: 'contain'
               }}
             >
-              {/* Descomente e ajuste o caminho quando o vídeo estiver disponível */}
-              <source src={vixemHeroVideo} type="video/mp4" />
-              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+              <source src="https://imgix.tractian.com/videos/homepage/US-Web-Header-Home-V3-Optimized.mp4" type="video/mp4" />
               Seu navegador não suporta o elemento de vídeo.
             </video>
             
@@ -134,38 +126,6 @@ const HeroSection = () => {
               </div>
             </VideoStats>
           </VideoContainer>
-
-          {/* Mockup alternativo para demonstração do VIXEM - ative removendo display: 'none' */}
-          <MockupContainer style={{ display: 'none' }}>
-            <MockupContent>
-              <div className="title">
-                <FaIndustry />
-                VIXEM Dashboard
-              </div>
-              <div className="metrics">
-                <div className="metric">
-                  <div className="value">98.7%</div>
-                  <div className="label">Precisão</div>
-                </div>
-                <div className="metric">
-                  <div className="value">24/7</div>
-                  <div className="label">Monitoramento</div>
-                </div>
-                <div className="metric">
-                  <div className="value">-45%</div>
-                  <div className="label">Falhas</div>
-                </div>
-                <div className="metric">
-                  <div className="value">100%</div>
-                  <div className="label">On-Premise</div>
-                </div>
-              </div>
-              <div className="status">
-                <FaCog />
-                Sistema Operacional - Indústria Metalúrgica
-              </div>
-            </MockupContent>
-          </MockupContainer>
         </HeroVisual>
       </HeroContent>
     </HeroContainer>

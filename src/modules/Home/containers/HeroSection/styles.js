@@ -1,4 +1,4 @@
-// src/modules/Home/containers/HeroSection/styles.js - REMOVE ESPAÇOS EM BRANCO
+// src/modules/Home/containers/HeroSection/styles.js - OTIMIZADO UX
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -31,78 +31,90 @@ const fadeInUp = keyframes`
   }
 `;
 
-// ===== CONTAINER PRINCIPAL - SEM ESPAÇOS =====
+// ===== CONTAINER PRINCIPAL - ESPAÇOS MÍNIMOS =====
 export const HeroContainer = styled.section`
-  min-height: 70vh;
+  min-height: 80vh;
   background: ${colors.white};
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 0; /* REMOVE TODO PADDING */
-  margin: 0; /* REMOVE TODA MARGEM */
+  padding: 0;
+  margin: 0;
   position: relative;
   overflow: hidden;
   
-  /* Compensa altura do header se necessário */
-  margin-top: -5px; /* Pequeno ajuste se houver gap do header */
-  
   @media (max-width: ${breakpoints.mobile}) {
-    min-height: 60vh;
-    padding: 0;
-    margin: 0;
+    min-height: 70vh;
+    padding: 1.5rem 0;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    min-height: 65vh;
-    padding: 0;
-    margin: 0;
+    min-height: 75vh;
+    padding: 1.8rem 0;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    min-height: 75vh;
-    padding: 0;
-    margin: 0;
+    min-height: 85vh;
+    padding: 2.5rem 0;
   }
 `;
 
-// ===== CONTENT - SEM PADDING EXTERNO =====
+// ===== CONTENT - PADDING OTIMIZADO =====
 export const HeroContent = styled.div`
-  max-width: 1200px;
+  max-width: none;
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 2.5rem;
-  align-items: center;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1rem;
+  align-items: flex-start;
   z-index: 2;
   position: relative;
-  width: 80%;
-  padding: 1rem 2rem; /* PADDING INTERNO MÍNIMO */
+  width: 100vw;
+  height: 80vh;
+  padding: 0;
 
   @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1rem;
     text-align: center;
-    width: 90%;
-    padding: 1rem;
+    width: 100%;
+    padding: 0;
+    height: auto;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    gap: 1.5rem;
-    width: 95%;
-    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0;
+    height: auto;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    max-width: 1400px;
-    gap: 3rem;
-    padding: 2rem 4rem;
+    max-width: none;
+    gap: 1.5rem;
+    padding: 0;
+    width: 100vw;
+    height: 80vh;
   }
 `;
 
 export const HeroText = styled.div`
   animation: ${fadeInUp} 0.8s ease-out;
+  padding: 2rem 1rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  max-width: none;
 
   @media (max-width: ${breakpoints.tablet}) {
     order: 2;
+    height: auto;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 1.5rem;
   }
 `;
 
@@ -117,7 +129,7 @@ export const SustainabilityBadge = styled.div`
   font-size: 0.7rem;
   font-weight: 600;
   color: ${colors.primary};
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
   width: fit-content;
 
   svg {
@@ -128,69 +140,80 @@ export const SustainabilityBadge = styled.div`
   @media (max-width: ${breakpoints.mobile}) {
     font-size: 0.65rem;
     padding: 0.25rem 0.5rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin: 0 auto 0.8rem;
+    margin: 0 auto 0.6rem;
   }
 `;
 
+// ===== TÍTULO OTIMIZADO PARA UX =====
 export const HeroTitle = styled.h1`
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-  font-weight: 800;
-  line-height: 1.2;
+  /* Tamanho responsivo otimizado para legibilidade */
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700; /* Reduzido de 800 para melhor legibilidade */
+  line-height: 1.3; /* Melhorado para leitura */
   color: ${colors.black};
-  margin-bottom: 0.8rem;
-  letter-spacing: -0.025em;
-
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.015em; /* Reduzido para melhor legibilidade */
+  
+  /* Melhor hierarquia visual */
   .highlight {
     color: ${colors.primary};
-    font-weight: 900;
+    font-weight: 800; /* Destaque apenas no highlight */
   }
 
+  /* Quebras de linha otimizadas para mobile */
   @media (max-width: ${breakpoints.mobile}) {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    line-height: 1.25;
+    
     br {
-      display: none;
+      display: none; /* Remove quebras forçadas no mobile */
     }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
   }
 `;
 
 export const HeroSubtitle = styled.p`
-  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
   color: ${colors.neutral600};
-  line-height: 1.5;
-  margin-bottom: 1.2rem;
-  max-width: 400px;
+  line-height: 1.5; /* Otimizado para leitura */
+  margin-bottom: 1rem;
+  max-width: 420px; /* Linha ideal para leitura */
+  
+  /* Melhor contraste e legibilidade */
+  font-weight: 400;
 
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    font-size: 1.1rem;
-    max-width: 450px;
-    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    max-width: 460px;
+    margin-bottom: 1.2rem;
   }
 `;
 
 export const HeroStats = styled.div`
   display: flex;
-  gap: 1.2rem;
-  margin: 1.2rem 0;
+  gap: 1rem;
+  margin: 1rem 0;
 
   @media (max-width: ${breakpoints.mobile}) {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.8rem;
-    margin: 1rem 0;
+    gap: 0.6rem;
+    margin: 0.8rem 0;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -198,26 +221,26 @@ export const HeroStats = styled.div`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    gap: 1.5rem;
-    margin: 1.5rem 0;
+    gap: 1.2rem;
+    margin: 1.2rem 0;
   }
 `;
 
 export const Stat = styled.div`
   text-align: center;
-  min-width: 70px;
+  min-width: 65px;
 
   .number {
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
     font-weight: 800;
     color: ${colors.primary};
     display: block;
     line-height: 1;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.2rem;
   }
 
   .label {
-    font-size: clamp(0.6rem, 1.1vw, 0.7rem);
+    font-size: clamp(0.6rem, 1vw, 0.68rem);
     color: ${colors.neutral500};
     font-weight: 600;
     display: block;
@@ -226,25 +249,25 @@ export const Stat = styled.div`
 
   @media (min-width: ${breakpoints.large}) {
     .number {
-      font-size: 1.4rem;
-      margin-bottom: 0.3rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
     }
     .label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
     }
   }
 `;
 
 export const HeroButtons = styled.div`
   display: flex;
-  gap: 0.8rem;
-  margin-top: 1.2rem;
+  gap: 0.6rem;
+  margin-top: 1rem;
 
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
-    margin-top: 1rem;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -252,19 +275,20 @@ export const HeroButtons = styled.div`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    gap: 1rem;
-    margin-top: 1.5rem;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
   }
 `;
 
+// ===== BOTÕES OTIMIZADOS =====
 export const PrimaryButton = styled(Link)`
   background: ${colors.primary} !important;
   color: ${colors.white} !important;
-  padding: 0.6rem 1.2rem;
+  padding: 0.55rem 1.1rem; /* Reduzido para melhor proporção */
   border-radius: 4px;
   text-decoration: none !important;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.78rem; /* Otimizado para legibilidade */
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
@@ -284,15 +308,15 @@ export const PrimaryButton = styled(Link)`
 
   svg {
     color: ${colors.white} !important;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
-    max-width: 220px;
+    max-width: 200px;
     justify-content: center;
-    font-size: 0.75rem;
-    padding: 0.55rem 1rem;
+    font-size: 0.74rem;
+    padding: 0.5rem 0.9rem;
     
     &:hover {
       transform: none;
@@ -300,20 +324,20 @@ export const PrimaryButton = styled(Link)`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.85rem;
+    padding: 0.65rem 1.3rem;
+    font-size: 0.82rem;
   }
 `;
 
 export const SecondaryButton = styled(Link)`
   background: transparent;
   color: ${colors.primary};
-  padding: 0.6rem 1.2rem;
+  padding: 0.55rem 1.1rem;
   border: 2px solid ${colors.primary};
   border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
@@ -328,15 +352,15 @@ export const SecondaryButton = styled(Link)`
   }
 
   svg {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
-    max-width: 220px;
+    max-width: 200px;
     justify-content: center;
-    font-size: 0.75rem;
-    padding: 0.55rem 1rem;
+    font-size: 0.74rem;
+    padding: 0.5rem 0.9rem;
     
     &:hover {
       transform: none;
@@ -344,64 +368,73 @@ export const SecondaryButton = styled(Link)`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.85rem;
+    padding: 0.65rem 1.3rem;
+    font-size: 0.82rem;
   }
 `;
 
+// ===== VISUAL OTIMIZADO =====
 export const HeroVisual = styled.div`
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-end;
+  height: 80vh;
+  width: 100%;
+  margin-left: auto;
 
   @media (max-width: ${breakpoints.tablet}) {
     order: 1;
+    height: 40vh;
+    justify-content: center;
   }
 `;
 
 export const VideoContainer = styled.div`
   position: relative;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.1);
+  box-shadow: none;
   background: ${colors.black};
-  width: 100%;
-  max-width: 550px;
-  margin: 0 auto;
-  border: 1px solid rgba(30, 64, 175, 0.1);
-  aspect-ratio: 16/9;
+  width: 70%;
+  height: 80vh;
+  margin: 0;
+  border: none;
+  aspect-ratio: unset;
+  margin-left: auto;
   
   video, img {
     width: 100%;
-    height: 100%;
+    height: 80vh;
     display: block;
-    border-radius: 6px;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   &:hover {
-    box-shadow: 0 12px 28px rgba(30, 64, 175, 0.15);
-    transform: translateY(-1px);
-    transition: all 0.3s ease;
+    box-shadow: none;
+    transform: none;
+    transition: none;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    border-radius: 6px;
+    border-radius: 0;
     max-width: 100%;
-    aspect-ratio: 16/10;
+    height: 40vh;
+    width: 80%;
     
     video, img {
-      border-radius: 4px;
+      height: 40vh;
     }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    max-width: 650px;
-    border-radius: 10px;
+    max-width: 100%;
+    border-radius: 0;
+    height: 80vh;
+    width: 70%;
     
     video, img {
-      border-radius: 8px;
+      height: 80vh;
     }
   }
 `;
@@ -430,8 +463,8 @@ export const VideoOverlay = styled.div`
 `;
 
 export const VideoPlayButton = styled.button`
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: ${colors.white};
   border: 2px solid ${colors.primary};
@@ -441,7 +474,7 @@ export const VideoPlayButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   color: ${colors.primary};
-  font-size: 1rem;
+  font-size: 0.9rem;
   
   &:hover {
     background: ${colors.primary};
@@ -451,9 +484,9 @@ export const VideoPlayButton = styled.button`
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    width: 40px;
-    height: 40px;
-    font-size: 0.9rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.8rem;
     
     &:hover {
       transform: none;
@@ -461,123 +494,123 @@ export const VideoPlayButton = styled.button`
   }
 
   @media (min-width: ${breakpoints.large}) {
-    width: 50px;
-    height: 50px;
-    font-size: 1.1rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
   }
 `;
 
 export const VideoStats = styled.div`
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 8px;
+  right: 8px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   z-index: 3;
   
   .stat {
     background: rgba(15, 23, 42, 0.9);
     color: ${colors.white};
-    padding: 4px 8px;
+    padding: 3px 6px;
     border-radius: 3px;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     backdrop-filter: blur(10px);
     border-left: 2px solid ${colors.primary};
     
     .label {
       color: rgba(255, 255, 255, 0.8);
-      font-size: 0.65rem;
+      font-size: 0.62rem;
     }
     
     .value {
       font-weight: 600;
       color: ${colors.white};
-      font-size: 0.7rem;
+      font-size: 0.68rem;
     }
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    bottom: 8px;
-    right: 8px;
+    bottom: 6px;
+    right: 6px;
     
     .stat {
-      padding: 3px 6px;
-      font-size: 0.65rem;
+      padding: 2px 5px;
+      font-size: 0.62rem;
     }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    bottom: 12px;
-    right: 12px;
+    bottom: 10px;
+    right: 10px;
     
     .stat {
-      padding: 5px 10px;
-      font-size: 0.75rem;
+      padding: 4px 8px;
+      font-size: 0.72rem;
     }
   }
 `;
 
 export const MockupContainer = styled.div`
   background: ${colors.primary};
-  border-radius: 8px;
-  padding: 1.2rem;
-  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.12);
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: 0 6px 16px rgba(30, 64, 175, 0.1);
   position: relative;
   overflow: hidden;
-  max-width: 480px;
+  max-width: 460px;
   margin: 0 auto;
 
   @media (max-width: ${breakpoints.mobile}) {
-    padding: 1rem;
-    border-radius: 6px;
+    padding: 0.8rem;
+    border-radius: 4px;
     max-width: 100%;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    max-width: 550px;
-    padding: 1.5rem;
-    border-radius: 10px;
+    max-width: 520px;
+    padding: 1.2rem;
+    border-radius: 8px;
   }
 `;
 
 export const MockupContent = styled.div`
   background: ${colors.white};
-  border-radius: 6px;
-  padding: 1rem;
+  border-radius: 4px;
+  padding: 0.8rem;
   color: ${colors.secondary};
   position: relative;
   z-index: 2;
 
   .title {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
     color: ${colors.black};
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.25rem;
   }
 
   .metrics {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-    margin-bottom: 0.6rem;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .metric {
     text-align: center;
-    padding: 0.5rem;
+    padding: 0.4rem;
     background: rgba(30, 64, 175, 0.05);
-    border-radius: 4px;
+    border-radius: 3px;
     border: 1px solid rgba(30, 64, 175, 0.1);
 
     .value {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 800;
       color: ${colors.primary};
       margin-bottom: 0.1rem;
@@ -585,7 +618,7 @@ export const MockupContent = styled.div`
     }
 
     .label {
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       color: ${colors.neutral500};
       line-height: 1.2;
     }
@@ -594,35 +627,35 @@ export const MockupContent = styled.div`
   .status {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.25rem;
     color: ${colors.success};
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     justify-content: center;
-    padding: 0.3rem;
+    padding: 0.25rem;
     background: rgba(16, 185, 129, 0.1);
     border-radius: 3px;
     border: 1px solid rgba(16, 185, 129, 0.2);
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    padding: 0.8rem;
+    padding: 0.6rem;
     
     .title {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
     
     .metric {
       .value {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
       .label {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
       }
     }
     
     .status {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
     }
   }
 `;

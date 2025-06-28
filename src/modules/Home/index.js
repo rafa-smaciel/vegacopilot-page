@@ -1,4 +1,4 @@
-// src/modules/Home/index.js - ZERO ESPAÇOS GARANTIDO
+// src/modules/Home/index.js - ESPAÇOS INFERIORES REDUZIDOS
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -33,8 +33,6 @@ const NoGapsContainer = styled.div`
     margin: 0 !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
   }
   
   /* Seções grudadas - força zero gap */
@@ -54,6 +52,12 @@ const SectionWrapper = styled.div`
   margin: 0;
   padding: 0;
   
+  /* Remove padding inferior de TODAS as seções */
+  > section {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
   /* Hero - sem padding vertical */
   &.hero {
     > section {
@@ -65,15 +69,15 @@ const SectionWrapper = styled.div`
   /* Ultra compacto - logos e plant manager */
   &.ultra-tight {
     > section {
-      padding: 1rem 2rem !important;
+      padding: 0.2rem 2rem 0.2rem !important;
       margin: 0 !important;
       
       @media (max-width: 768px) {
-        padding: 0.8rem 1rem !important;
+        padding: 0.1rem 1rem 0.1rem !important;
       }
       
       @media (min-width: 1900px) {
-        padding: 1.5rem 4rem !important;
+        padding: 0.3rem 4rem 0.3rem !important;
       }
     }
   }
@@ -81,31 +85,31 @@ const SectionWrapper = styled.div`
   /* Compacto - outras seções */
   &.tight {
     > section {
-      padding: 1.5rem 2rem !important;
+      padding: 0.3rem 2rem 0.3rem !important;
       margin: 0 !important;
       
       @media (max-width: 768px) {
-        padding: 1.2rem 1rem !important;
+        padding: 0.2rem 1rem 0.2rem !important;
       }
       
       @media (min-width: 1900px) {
-        padding: 2rem 4rem !important;
+        padding: 0.4rem 4rem 0.4rem !important;
       }
     }
   }
   
-  /* CTA com mais espaço */
+  /* CTA - compacto também */
   &.cta {
     > section {
-      padding: 2rem 2rem !important;
+      padding: 0.4rem 2rem 0.4rem !important;
       margin: 0 !important;
       
       @media (max-width: 768px) {
-        padding: 1.5rem 1rem !important;
+        padding: 0.3rem 1rem 0.3rem !important;
       }
       
       @media (min-width: 1900px) {
-        padding: 3rem 4rem !important;
+        padding: 0.5rem 4rem 0.5rem !important;
       }
     }
   }
@@ -125,11 +129,23 @@ const GlobalReset = styled.div`
   /* Força sem espaços */
   section {
     margin: 0 !important;
+    padding-bottom: 0 !important;
   }
   
   /* Remove espaços residuais */
   > * + * {
     margin-top: 0 !important;
+  }
+  
+  /* Força containers internos sem espaço inferior */
+  div[class*="Container"] {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Remove margens de últimos elementos */
+  * :last-child {
+    margin-bottom: 0 !important;
   }
 `;
 
@@ -164,8 +180,17 @@ export const Home = () => {
       mainContainer.style.padding = '0';
     }
     
+    // Força CSS global para remover espaços
+    const style = document.createElement('style');
+    style.textContent = `
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      section { margin: 0 !important; }
+      .tight-layout section { padding-bottom: 0 !important; }
+    `;
+    document.head.appendChild(style);
+    
     return () => {
-      // Cleanup se necessário
+      document.head.removeChild(style);
     };
   }, []);
 
@@ -177,7 +202,7 @@ export const Home = () => {
           <HeroSection />
         </SectionWrapper>
 
-        {/* 2. Logos - Grudado no Hero */}
+        {/* 2. Logos - Grudado no Hero (SEM título, imagens menores) */}
         <SectionWrapper className="ultra-tight">
           <CompanyLogosSection />
         </SectionWrapper>
@@ -187,62 +212,62 @@ export const Home = () => {
           <PlantManagerSection />
         </SectionWrapper>
 
-        {/* 4. Produtos - Compacto */}
+        {/* 4. Produtos - Ultra Compacto */}
         <SectionWrapper className="tight">
           <ProductsSection />
         </SectionWrapper>
 
-        {/* 5. Tecnologia - Compacto */}
+        {/* 4. Tecnologia - Ultra Compacto */}
         <SectionWrapper className="tight">
           <TechnologySection />
         </SectionWrapper>
 
-        {/* 6. Sistema Integrado - Compacto */}
+        {/* 5. Sistema Integrado - Ultra Compacto */}
         <SectionWrapper className="tight">
           <IntegratedSystemSection />
         </SectionWrapper>
 
-        {/* 7. Estudos de Caso - Compacto */}
+        {/* 6. Estudos de Caso - Ultra Compacto */}
         <SectionWrapper className="tight">
           <CaseStudySection />
         </SectionWrapper>
 
-        {/* 8. Segurança - Compacto */}
+        {/* 7. Segurança - Ultra Compacto */}
         <SectionWrapper className="tight">
           <SecuritySection />
         </SectionWrapper>
 
-        {/* 9. Depoimentos - Compacto */}
+        {/* 8. Depoimentos - Ultra Compacto */}
         <SectionWrapper className="tight">
           <TestimonialsSection />
         </SectionWrapper>
 
-        {/* 10. ROI - Compacto */}
+        {/* 9. ROI - Ultra Compacto */}
         <SectionWrapper className="tight">
           <ROISection />
         </SectionWrapper>
 
-        {/* 11. Novidades - Compacto */}
+        {/* 10. Novidades - Ultra Compacto */}
         <SectionWrapper className="tight">
           <NewsSection />
         </SectionWrapper>
 
-        {/* 12. Indústrias - Compacto */}
+        {/* 11. Indústrias - Ultra Compacto */}
         <SectionWrapper className="tight">
           <IndustriesSection />
         </SectionWrapper>
 
-        {/* 13. Tecnologia Patenteada - Compacto */}
+        {/* 12. Tecnologia Patenteada - Ultra Compacto */}
         <SectionWrapper className="tight">
           <PatentedTechSection />
         </SectionWrapper>
 
-        {/* 14. Ecossistema - Compacto */}
+        {/* 13. Ecossistema - Ultra Compacto */}
         <SectionWrapper className="tight">
           <EcosystemSection />
         </SectionWrapper>
 
-        {/* 15. CTA Form - Mais espaço */}
+        {/* 14. CTA Form - Compacto */}
         <SectionWrapper className="cta">
           <CTAFormSection />
         </SectionWrapper>

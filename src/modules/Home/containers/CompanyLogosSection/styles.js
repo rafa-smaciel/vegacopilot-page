@@ -1,4 +1,4 @@
-// src/modules/Home/containers/CompanyLogosSection/styles.js - CÓDIGO COMPLETO
+// src/modules/Home/containers/CompanyLogosSection/styles.js - IMAGENS REDUZIDAS
 import styled, { keyframes } from 'styled-components';
 
 const colors = {
@@ -46,8 +46,8 @@ const float = keyframes`
 `;
 
 export const LogosContainer = styled.section`
-  padding: 1rem 2rem; /* MUITO COMPACTO */
-  margin: 0; /* SEM MARGEM */
+  padding: 0.8rem 2rem; /* REDUZIDO de 1rem */
+  margin: 0;
   background: ${colors.white};
   text-align: center;
   overflow: hidden;
@@ -74,42 +74,11 @@ export const LogosContainer = styled.section`
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 1rem;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    padding: 1.5rem 4rem;
-  }
-`;
-
-export const LogosTitle = styled.h2`
-  font-size: 1.3rem; /* PEQUENO */
-  color: ${colors.secondary};
-  margin-bottom: 1rem; /* PEQUENO */
-  font-weight: 700;
-  text-align: center;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 2px;
-    background: linear-gradient(90deg, ${colors.primary}, ${colors.accent});
-    border-radius: 2px;
-  }
-
-  @media (min-width: ${breakpoints.large}) {
-    font-size: 1.5rem;
-    margin-bottom: 1.2rem;
-  }
-
-  @media (max-width: ${breakpoints.mobile}) {
-    font-size: 1.1rem;
-    margin-bottom: 0.8rem;
+    padding: 1rem 4rem;
   }
 `;
 
@@ -137,7 +106,7 @@ export const LogosCarousel = styled.div`
 export const LogosTrack = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* MENOR GAP */
+  gap: 1rem; /* REDUZIDO de 1.5rem */
   animation: ${scroll} 40s linear infinite;
   width: max-content;
   
@@ -146,31 +115,31 @@ export const LogosTrack = styled.div`
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    gap: 1rem;
+    gap: 0.8rem;
     animation-duration: 30s;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    gap: 2rem;
+    gap: 1.2rem;
     animation-duration: 50s;
   }
 `;
 
 export const IndustryCard = styled.div`
   position: relative;
-  width: 160px; /* MENOR */
-  height: 100px; /* MENOR */
-  border-radius: 12px;
+  width: 120px; /* REDUZIDO de 160px */
+  height: 80px; /* REDUZIDO de 100px */
+  border-radius: 8px; /* REDUZIDO de 12px */
   overflow: hidden;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06); /* SOMBRA MENOR */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* REDUZIDO */
   border: 2px solid transparent;
   background: ${colors.white};
   
   ${props => props.featured && `
     border-color: ${colors.primary};
-    box-shadow: 0 6px 20px rgba(30, 64, 175, 0.12);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.08);
     
     &::before {
       content: '';
@@ -185,24 +154,24 @@ export const IndustryCard = styled.div`
   `}
 
   &:hover {
-    transform: translateY(-4px) scale(1.01); /* MOVIMENTO MENOR */
-    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.15);
+    transform: translateY(-2px) scale(1.01); /* REDUZIDO */
+    box-shadow: 0 6px 16px rgba(30, 64, 175, 0.12);
     border-color: ${colors.primary};
     animation: ${float} 2s ease-in-out infinite;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    width: 140px;
-    height: 80px;
+    width: 100px; /* REDUZIDO de 140px */
+    height: 65px; /* REDUZIDO de 80px */
     
     &:hover {
-      transform: translateY(-2px) scale(1.005);
+      transform: translateY(-1px) scale(1.005);
     }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    width: 180px;
-    height: 120px;
+    width: 140px; /* REDUZIDO de 180px */
+    height: 90px; /* REDUZIDO de 120px */
   }
 `;
 
@@ -215,7 +184,7 @@ export const IndustryImage = styled.img`
 
   ${IndustryCard}:hover & {
     filter: brightness(1.1) saturate(1.2);
-    transform: scale(1.03);
+    transform: scale(1.02); /* REDUZIDO de 1.03 */
   }
 `;
 
@@ -235,9 +204,9 @@ export const IndustryLabel = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 0.8rem; /* MENOR */
+  font-size: 0.7rem; /* REDUZIDO de 0.8rem */
   text-align: center;
-  padding: 0 0.4rem;
+  padding: 0 0.3rem; /* REDUZIDO de 0.4rem */
   transition: all 0.3s ease;
 
   ${IndustryCard}:hover & {
@@ -246,22 +215,22 @@ export const IndustryLabel = styled.div`
       ${colors.primary} 0%,
       rgba(30, 64, 175, 0.9) 100%
     );
-    font-size: 0.85rem;
+    font-size: 0.75rem; /* REDUZIDO de 0.85rem */
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 0.7rem;
+    font-size: 0.6rem; /* REDUZIDO de 0.7rem */
     
     ${IndustryCard}:hover & {
-      font-size: 0.75rem;
+      font-size: 0.65rem; /* REDUZIDO de 0.75rem */
     }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* REDUZIDO de 0.9rem */
     
     ${IndustryCard}:hover & {
-      font-size: 0.95rem;
+      font-size: 0.85rem; /* REDUZIDO de 0.95rem */
     }
   }
 `;

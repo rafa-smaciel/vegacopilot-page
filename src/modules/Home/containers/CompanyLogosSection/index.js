@@ -1,8 +1,7 @@
-// src/modules/Home/containers/CompanyLogosSection/index.js
+// src/modules/Home/containers/CompanyLogosSection/index.js - SEM TÍTULO, IMAGENS MENORES
 import React from 'react';
 import {
   LogosContainer,
-  LogosTitle,
   LogosCarousel,
   LogosTrack,
   IndustryCard,
@@ -67,7 +66,8 @@ const CompanyLogosSection = () => {
 
   return (
     <LogosContainer>
-      <LogosTitle>Setores que Transformamos com IA</LogosTitle>
+      {/* TÍTULO REMOVIDO CONFORME SOLICITADO */}
+      
       <LogosCarousel>
         <LogosTrack>
           {/* Primeiro conjunto para o carrossel infinito */}
@@ -101,17 +101,7 @@ const CompanyLogosSection = () => {
         </LogosTrack>
       </LogosCarousel>
       
-      {/* Informação sobre aplicações de IA */}
-      <div style={{ 
-        textAlign: 'center',
-        marginTop: '2.5rem',
-        fontSize: '0.95rem',
-        color: '#64748B',
-        fontWeight: '500'
-      }}>
-        <strong style={{ color: '#1E40AF' }}>Visão Computacional Aplicada</strong> • 
-        <strong style={{ color: '#1E40AF' }}> IA Industrial em Múltiplos Setores</strong>
-      </div>
+      {/* FRASE REMOVIDA CONFORME SOLICITADO */}
     </LogosContainer>
   );
 };
