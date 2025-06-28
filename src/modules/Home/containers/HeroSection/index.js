@@ -1,4 +1,4 @@
-// src/modules/Home/containers/HeroSection/index.js - PROPORÇÃO VIXEM/TRACTIAN
+// src/modules/Home/containers/HeroSection/index.js - PROPORÇÃO VIXEM/TRACTIAN CORRIGIDA
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -96,7 +96,7 @@ const HeroSection = () => {
               </VideoPlayButton>
             </VideoOverlay>
             
-            {/* Vídeo da Tractian ou imagem similar ao VIXEM */}
+            {/* Vídeo da Tractian otimizado para manter proporções */}
             <video
               autoPlay
               muted
@@ -106,8 +106,19 @@ const HeroSection = () => {
               style={{ 
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover', // Garante que preencha toda a área
-                objectPosition: 'center' // Centraliza o conteúdo
+                objectFit: 'contain', // Mantém proporções
+                objectPosition: 'center',
+                backgroundColor: '#0F172A'
+              }}
+              onLoadedMetadata={(e) => {
+                // Garantir que o vídeo mantenha proporções corretas
+                const video = e.target;
+                const aspectRatio = video.videoWidth / video.videoHeight;
+                if (aspectRatio > 1.77) { // Se for muito wide
+                  video.style.objectFit = 'contain';
+                } else {
+                  video.style.objectFit = 'cover';
+                }
               }}
             >
               <source src="https://imgix.tractian.com/videos/homepage/US-Web-Header-Home-V3-Optimized.mp4" type="video/mp4" />

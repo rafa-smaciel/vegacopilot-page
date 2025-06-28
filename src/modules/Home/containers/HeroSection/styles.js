@@ -1,4 +1,4 @@
-// src/modules/Home/containers/HeroSection/styles.js - PROPORÇÕES TRACTIAN EXATAS
+// src/modules/Home/containers/HeroSection/styles.js - PROPORÇÕES TRACTIAN EXATAS CORRIGIDAS
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -422,6 +422,7 @@ export const HeroVisual = styled.div`
   }
 `;
 
+// ===== VIDEO CONTAINER CORRIGIDO =====
 export const VideoContainer = styled.div`
   position: relative;
   border-radius: 0;
@@ -432,8 +433,24 @@ export const VideoContainer = styled.div`
   height: 100%;
   margin: 0;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
-  video, img {
+  video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain; /* Mantém proporções sem cortar */
+    object-position: center;
+    max-width: 100%;
+    max-height: 100%;
+    /* Remove distorção forçando dimensões mínimas */
+    min-width: 100%;
+    min-height: 100%;
+  }
+  
+  img {
     width: 100%;
     height: 100%;
     display: block;
@@ -445,9 +462,19 @@ export const VideoContainer = styled.div`
     height: 100%;
     width: 100%;
     
-    video, img {
+    video {
       height: 100%;
       width: 100%;
+      object-fit: contain;
+      /* Para mobile, permite um pouco mais de flexibilidade */
+      min-width: unset;
+      min-height: unset;
+    }
+    
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
 
@@ -455,9 +482,18 @@ export const VideoContainer = styled.div`
     height: 100%;
     width: 100%;
     
-    video, img {
+    video {
       height: 100%;
       width: 100%;
+      object-fit: contain;
+      min-width: unset;
+      min-height: unset;
+    }
+    
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
 
@@ -465,9 +501,16 @@ export const VideoContainer = styled.div`
     height: 100%;
     width: 100%;
     
-    video, img {
+    video {
       height: 100%;
       width: 100%;
+      object-fit: contain;
+    }
+    
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
 `;
