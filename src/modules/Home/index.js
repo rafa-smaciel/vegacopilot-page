@@ -1,4 +1,4 @@
-// src/modules/Home/index.js - ESPAÇOS INFERIORES REDUZIDOS
+// src/modules/Home/index.js - PROPORÇÕES TRACTIAN EXATAS
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -19,8 +19,8 @@ import PatentedTechSection from './containers/PatentedTechSection';
 import EcosystemSection from './containers/EcosystemSection';
 import CTAFormSection from './containers/CTAFormSection';
 
-// Container principal ZERO gaps
-const NoGapsContainer = styled.div`
+// ===== CONTAINER PRINCIPAL - PROPORÇÕES TRACTIAN =====
+const TractianContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -28,14 +28,14 @@ const NoGapsContainer = styled.div`
   padding: 0;
   overflow-x: hidden;
   
-  /* Remove absolutamente TODOS os espaços */
+  /* Remove TODOS os espaços - Estilo Tractian */
   > * {
     margin: 0 !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
   
-  /* Seções grudadas - força zero gap */
+  /* Seções grudadas sem gaps */
   > section {
     margin: 0 !important;
     display: block;
@@ -47,7 +47,7 @@ const NoGapsContainer = styled.div`
   }
 `;
 
-// Wrapper que força padding específico sem afetar margins
+// ===== WRAPPERS PROPORCIONAIS TRACTIAN =====
 const SectionWrapper = styled.div`
   margin: 0;
   padding: 0;
@@ -58,66 +58,84 @@ const SectionWrapper = styled.div`
     margin-bottom: 0 !important;
   }
   
-  /* Hero - sem padding vertical */
+  /* HERO - Altura ajustada para 80vh */
   &.hero {
     > section {
       padding: 0 !important;
       margin: 0 !important;
+      height: 80vh !important;
+      min-height: 650px !important;
+      max-height: 850px !important;
     }
   }
   
-  /* Ultra compacto - logos e plant manager */
-  &.ultra-tight {
+  /* LOGOS - Espaçamento aumentado */
+  &.logos {
     > section {
-      padding: 0.2rem 2rem 0.2rem !important;
+      padding: 0.8rem 2rem !important;
       margin: 0 !important;
       
       @media (max-width: 768px) {
-        padding: 0.1rem 1rem 0.1rem !important;
+        padding: 0.6rem 1rem !important;
       }
       
       @media (min-width: 1900px) {
-        padding: 0.3rem 4rem 0.3rem !important;
+        padding: 1rem 4rem !important;
       }
     }
   }
   
-  /* Compacto - outras seções */
-  &.tight {
+  /* PLANT MANAGER - Espaçamento aumentado */
+  &.plant-manager {
     > section {
-      padding: 0.3rem 2rem 0.3rem !important;
+      padding: 1rem 2rem !important;
       margin: 0 !important;
       
       @media (max-width: 768px) {
-        padding: 0.2rem 1rem 0.2rem !important;
+        padding: 0.8rem 1rem !important;
       }
       
       @media (min-width: 1900px) {
-        padding: 0.4rem 4rem 0.4rem !important;
+        padding: 1.2rem 4rem !important;
       }
     }
   }
   
-  /* CTA - compacto também */
+  /* SEÇÕES NORMAIS - Padding Tractian (reduzido) */
+  &.normal {
+    > section {
+      padding: 3rem 2rem !important; /* MUITO MENOR que 6rem */
+      margin: 0 !important;
+      
+      @media (max-width: 768px) {
+        padding: 2rem 1rem !important;
+      }
+      
+      @media (min-width: 1900px) {
+        padding: 4rem 4rem !important;
+      }
+    }
+  }
+  
+  /* CTA - Compacto */
   &.cta {
     > section {
-      padding: 0.4rem 2rem 0.4rem !important;
+      padding: 3rem 2rem !important;
       margin: 0 !important;
       
       @media (max-width: 768px) {
-        padding: 0.3rem 1rem 0.3rem !important;
+        padding: 2rem 1rem !important;
       }
       
       @media (min-width: 1900px) {
-        padding: 0.5rem 4rem 0.5rem !important;
+        padding: 4rem 4rem !important;
       }
     }
   }
 `;
 
-// Reset global dentro do componente
-const GlobalReset = styled.div`
-  /* Reset completo */
+// ===== RESET GLOBAL TRACTIAN =====
+const TractianReset = styled.div`
   margin: 0;
   padding: 0;
   
@@ -168,24 +186,23 @@ export const Home = () => {
     return () => window.removeEventListener('scroll', animateOnScroll);
   }, []);
 
-  // Remove qualquer espaço do body quando componente monta
+  // CSS global Tractian
   useEffect(() => {
     document.body.style.margin = '0';
     document.body.style.padding = '0';
     
-    // Remove gaps do container pai se existir
     const mainContainer = document.querySelector('main');
     if (mainContainer) {
       mainContainer.style.margin = '0';
       mainContainer.style.padding = '0';
     }
     
-    // Força CSS global para remover espaços
     const style = document.createElement('style');
     style.textContent = `
       * { margin: 0; padding: 0; box-sizing: border-box; }
       section { margin: 0 !important; }
-      .tight-layout section { padding-bottom: 0 !important; }
+      .tractian-layout section { padding-bottom: 0 !important; }
+      body { overflow-x: hidden; }
     `;
     document.head.appendChild(style);
     
@@ -195,84 +212,84 @@ export const Home = () => {
   }, []);
 
   return (
-    <GlobalReset className="tight-layout">
-      <NoGapsContainer className="no-gaps">
-        {/* 1. Hero Principal - SEM espaços */}
+    <TractianReset className="tractian-layout">
+      <TractianContainer className="tractian-proportions">
+        {/* 1. HERO - 75vh (Tractian) */}
         <SectionWrapper className="hero">
           <HeroSection />
         </SectionWrapper>
 
-        {/* 2. Logos - Grudado no Hero (SEM título, imagens menores) */}
-        <SectionWrapper className="ultra-tight">
+        {/* 2. LOGOS - Ultra compacto (Tractian) */}
+        {/* <SectionWrapper className="logos">
           <CompanyLogosSection />
-        </SectionWrapper>
+        </SectionWrapper> */}
 
-        {/* 3. Plant Manager - Grudado nos Logos */}
-        <SectionWrapper className="ultra-tight">
+        {/* 3. PLANT MANAGER - Ultra compacto (Tractian) */}
+        <SectionWrapper className="plant-manager">
           <PlantManagerSection />
         </SectionWrapper>
 
-        {/* 4. Produtos - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 4. PRODUTOS - Padding reduzido (Tractian) */}
+        <SectionWrapper className="normal">
           <ProductsSection />
         </SectionWrapper>
 
-        {/* 4. Tecnologia - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 5. TECNOLOGIA - Padding reduzido */}
+        <SectionWrapper className="normal">
           <TechnologySection />
         </SectionWrapper>
 
-        {/* 5. Sistema Integrado - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 6. SISTEMA INTEGRADO - Padding reduzido */}
+        <SectionWrapper className="normal">
           <IntegratedSystemSection />
         </SectionWrapper>
 
-        {/* 6. Estudos de Caso - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 7. ESTUDOS DE CASO - Padding reduzido */}
+        <SectionWrapper className="normal">
           <CaseStudySection />
         </SectionWrapper>
 
-        {/* 7. Segurança - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 8. SEGURANÇA - Padding reduzido */}
+        <SectionWrapper className="normal">
           <SecuritySection />
         </SectionWrapper>
 
-        {/* 8. Depoimentos - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 9. DEPOIMENTOS - Padding reduzido */}
+        <SectionWrapper className="normal">
           <TestimonialsSection />
         </SectionWrapper>
 
-        {/* 9. ROI - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 10. ROI - Padding reduzido */}
+        <SectionWrapper className="normal">
           <ROISection />
         </SectionWrapper>
 
-        {/* 10. Novidades - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 11. NOVIDADES - Padding reduzido */}
+        <SectionWrapper className="normal">
           <NewsSection />
         </SectionWrapper>
 
-        {/* 11. Indústrias - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 12. INDÚSTRIAS - Padding reduzido */}
+        <SectionWrapper className="normal">
           <IndustriesSection />
         </SectionWrapper>
 
-        {/* 12. Tecnologia Patenteada - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 13. TECNOLOGIA PATENTEADA - Padding reduzido */}
+        <SectionWrapper className="normal">
           <PatentedTechSection />
         </SectionWrapper>
 
-        {/* 13. Ecossistema - Ultra Compacto */}
-        <SectionWrapper className="tight">
+        {/* 14. ECOSSISTEMA - Padding reduzido */}
+        <SectionWrapper className="normal">
           <EcosystemSection />
         </SectionWrapper>
 
-        {/* 14. CTA Form - Compacto */}
+        {/* 15. CTA FORM - Compacto */}
         <SectionWrapper className="cta">
           <CTAFormSection />
         </SectionWrapper>
-      </NoGapsContainer>
-    </GlobalReset>
+      </TractianContainer>
+    </TractianReset>
   );
 };
 

@@ -1,4 +1,4 @@
-// src/modules/Home/containers/CompanyLogosSection/styles.js - IMAGENS REDUZIDAS
+// src/modules/Home/containers/CompanyLogosSection/styles.js - TAMANHO TRACTIAN
 import styled, { keyframes } from 'styled-components';
 
 const colors = {
@@ -41,12 +41,13 @@ const float = keyframes`
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
 `;
 
+// ===== CONTAINER - ALTURA AUMENTADA =====
 export const LogosContainer = styled.section`
-  padding: 0.8rem 2rem; /* REDUZIDO de 1rem */
+  padding: 0.8rem 2rem; /* ALTURA AUMENTADA */
   margin: 0;
   background: ${colors.white};
   text-align: center;
@@ -106,7 +107,7 @@ export const LogosCarousel = styled.div`
 export const LogosTrack = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem; /* REDUZIDO de 1.5rem */
+  gap: 0.8rem; /* TRACTIAN SPACING */
   animation: ${scroll} 40s linear infinite;
   width: max-content;
   
@@ -115,31 +116,32 @@ export const LogosTrack = styled.div`
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    gap: 0.8rem;
+    gap: 0.6rem;
     animation-duration: 30s;
   }
 
   @media (min-width: ${breakpoints.large}) {
-    gap: 1.2rem;
+    gap: 1rem;
     animation-duration: 50s;
   }
 `;
 
+// ===== CARDS - TAMANHOS TRACTIAN =====
 export const IndustryCard = styled.div`
   position: relative;
-  width: 120px; /* REDUZIDO de 160px */
-  height: 80px; /* REDUZIDO de 100px */
-  border-radius: 8px; /* REDUZIDO de 12px */
+  width: 90px; /* TAMANHO TRACTIAN */
+  height: 60px; /* ALTURA TRACTIAN */
+  border-radius: 6px; /* BORDER TRACTIAN */
   overflow: hidden;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* REDUZIDO */
-  border: 2px solid transparent;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03); /* SOMBRA TRACTIAN */
+  border: 1px solid transparent;
   background: ${colors.white};
   
   ${props => props.featured && `
     border-color: ${colors.primary};
-    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.08);
+    box-shadow: 0 2px 6px rgba(30, 64, 175, 0.06);
     
     &::before {
       content: '';
@@ -147,44 +149,44 @@ export const IndustryCard = styled.div`
       top: 0;
       left: 0;
       right: 0;
-      height: 2px;
+      height: 1px;
       background: linear-gradient(90deg, ${colors.primary}, ${colors.accent});
       z-index: 3;
     }
   `}
 
   &:hover {
-    transform: translateY(-2px) scale(1.01); /* REDUZIDO */
-    box-shadow: 0 6px 16px rgba(30, 64, 175, 0.12);
+    transform: translateY(-1px) scale(1.005); /* HOVER TRACTIAN */
+    box-shadow: 0 3px 8px rgba(30, 64, 175, 0.08);
     border-color: ${colors.primary};
     animation: ${float} 2s ease-in-out infinite;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    width: 100px; /* REDUZIDO de 140px */
-    height: 65px; /* REDUZIDO de 80px */
+    width: 75px; /* MOBILE TRACTIAN */
+    height: 50px;
     
     &:hover {
-      transform: translateY(-1px) scale(1.005);
+      transform: translateY(-0.5px) scale(1.002);
     }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    width: 140px; /* REDUZIDO de 180px */
-    height: 90px; /* REDUZIDO de 120px */
+    width: 105px; /* LARGE TRACTIAN */
+    height: 70px;
   }
 `;
 
 export const IndustryImage = styled.img`
   width: 100%;
-  height: 70%;
+  height: 75%; /* TRACTIAN PROPORTION */
   object-fit: cover;
   transition: all 0.4s ease;
-  filter: brightness(0.9) saturate(0.8);
+  filter: brightness(0.95) saturate(0.9);
 
   ${IndustryCard}:hover & {
-    filter: brightness(1.1) saturate(1.2);
-    transform: scale(1.02); /* REDUZIDO de 1.03 */
+    filter: brightness(1.05) saturate(1.1);
+    transform: scale(1.01); /* HOVER TRACTIAN */
   }
 `;
 
@@ -193,7 +195,7 @@ export const IndustryLabel = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  height: 30%;
+  height: 25%; /* TRACTIAN HEIGHT */
   background: linear-gradient(
     to top,
     rgba(30, 64, 175, 0.95) 0%,
@@ -204,9 +206,9 @@ export const IndustryLabel = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 0.7rem; /* REDUZIDO de 0.8rem */
+  font-size: 0.6rem; /* TRACTIAN SIZE */
   text-align: center;
-  padding: 0 0.3rem; /* REDUZIDO de 0.4rem */
+  padding: 0 0.2rem; /* TRACTIAN PADDING */
   transition: all 0.3s ease;
 
   ${IndustryCard}:hover & {
@@ -215,22 +217,22 @@ export const IndustryLabel = styled.div`
       ${colors.primary} 0%,
       rgba(30, 64, 175, 0.9) 100%
     );
-    font-size: 0.75rem; /* REDUZIDO de 0.85rem */
+    font-size: 0.65rem; /* HOVER TRACTIAN */
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 0.6rem; /* REDUZIDO de 0.7rem */
+    font-size: 0.55rem; /* MOBILE TRACTIAN */
     
     ${IndustryCard}:hover & {
-      font-size: 0.65rem; /* REDUZIDO de 0.75rem */
+      font-size: 0.6rem;
     }
   }
 
   @media (min-width: ${breakpoints.large}) {
-    font-size: 0.8rem; /* REDUZIDO de 0.9rem */
+    font-size: 0.7rem; /* LARGE TRACTIAN */
     
     ${IndustryCard}:hover & {
-      font-size: 0.85rem; /* REDUZIDO de 0.95rem */
+      font-size: 0.75rem;
     }
   }
 `;
